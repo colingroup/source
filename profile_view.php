@@ -18,6 +18,7 @@ if(guid() && Common::isOptionActive('seo_friendly_urls') && Common::getOptionSet
     redirect(User::url(guid()));
 }
 
+        
 $_GET['display'] = get_param('display', User::displayProfile());
 
 $where = ' u.user_id = ' . to_sql(guid(), 'Number');
@@ -33,5 +34,4 @@ if (Common::isParseModule('profile_menu')) {
     $profile_menu->setActive('view');
     $page->add($profile_menu);
 }
-
 include('./_include/core/main_close.php');

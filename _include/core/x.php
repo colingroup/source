@@ -588,17 +588,28 @@ class Moderator {
         global $g_user;
 
         $cmd = get_param('section', self::checkAccess());
+        DB::query("SELECT * FROM texts");
+        $text_num=DB::num_rows();
 
+        DB::query("SELECT * FROM vids_video Where active != 1");
+        $video_num=DB::num_rows();
+
+        DB::query("SELECT * FROM photo Where ".CProfilePhoto::moderatorVisibleFilter());
+        $photo_num=DB::num_rows();
+
+        DB::query("SELECT * FROM user Where active != 1");
+        $user_num=DB::num_rows();
         $buttons = array(
-			0 => array('title' => l('moderator_profiles'), 'section' => 'profiles'),
-            1 => array('title' => l('Moderator photo'), 'section' => 'photo'),
-            2 => array('title' => l('Moderator video'), 'section' => 'vids_video'),
-            3 => array('title' => l('Moderator essay'), 'section' => 'texts'),
+			0 => array('title' => l('moderator_profiles'), 'section' => 'profiles', 'mod_section' => $user_num),
+            1 => array('title' => l('Moderator photo'), 'section' => 'photo', 'mod_section' => $photo_num),
+            2 => array('title' => l('Moderator video'), 'section' => 'vids_video', 'mod_section' => $video_num),
+            3 => array('title' => l('Moderator essay'), 'section' => 'texts', 'mod_section' => $text_num),
         );
 
         foreach ($buttons as $v) {
             $html->setvar('button_title', $v['title']);
             $html->setvar('section', $v['section']);
+            $html->setvar('mod_section', $v['mod_section']);
             if ($cmd == $v['section']) {
                 if (Common::getOption('set', 'template_options') !== 'urban') {
                     $html->setvar('active_button', 'button_active');

@@ -67,9 +67,9 @@ class CProfile extends UserFields  {
                 if (self::isActive('orientation') && !Common::isOptionActive('your_orientation')) {
                     User::update(array('p_orientation' => get_checks_param('p_orientation')));
                 }
-
+                
                 $this->updateTextsApproval();
-
+                
                 DB::query("SELECT *, YEAR(FROM_DAYS(TO_DAYS('" . date('Y-m-d H:i:s') . "')-TO_DAYS(birth))) AS age FROM user WHERE user_id=" . guid() . "");
                 $g_user = DB::fetch_row();
                 //g_user_full();

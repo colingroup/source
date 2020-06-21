@@ -743,10 +743,10 @@ opacity:0.6;
 
                 <!-- begin_header_menu_moderator_item -->
                 <!-- begin_header_menu_moderator -->
-                <li><a href="{url_main}{url_page_moderator}">{l_header_menu_moderator}</a></li>
+                <li><a href="{url_main}{url_page_moderator}">{l_header_menu_moderator}&nbsp;<strong name="mod_num" class="mod_num"></strong></a></li>
                 <!-- end_header_menu_moderator -->
                 <!-- begin_header_menu_moderator_selected -->
-                <li class="selected"><span>{l_header_menu_moderator}</span></li>
+                <li class="selected"><span>{l_header_menu_moderator}&nbsp;<strong class="mod_num"></strong></span></li>
                 <!-- end_header_menu_moderator_selected -->
                 <!-- end_header_menu_moderator_item -->
 
@@ -759,7 +759,10 @@ opacity:0.6;
         </div>
 	</div>
 	<!-- /header -->
-
+    <script>
+        if({mod_num} != '0')
+            $jq('.mod_num').text('{mod_num}');
+    </script>
 	<!-- content -->
 
     <div class="content">

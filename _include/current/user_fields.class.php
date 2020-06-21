@@ -1888,6 +1888,7 @@ class UserFields extends CHtmlBlock
 
     public function updateTextsApproval($type = 'profile')
     {
+        
         global $g_user;
         if (Common::isOptionActive('texts_approval')) {
             $this->updateTexts(guid(), $type);

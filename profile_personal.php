@@ -15,12 +15,14 @@ class CProfilePersonal extends  UserFields//CHtmlBlock
 {
 	function action()
 	{
+        
 		$cmd = get_param('cmd', '');
 		if ($cmd == 'update')
 		{
 			$this->message = '';
             $this->updateInfo(guid(), 'personal');
             // Проверка селектов пустая $this->verification('personal');
+            
 			if ($this->message == '')
 			{
                 $fieldStatus = intval(get_param('status'));
@@ -30,6 +32,7 @@ class CProfilePersonal extends  UserFields//CHtmlBlock
                     $fieldStatusValue = DB::result($sql);
                     Wall::add('field_status', 0, false, $fieldStatusValue);
                 }
+                
 
 				/*DB::query("SELECT *, YEAR(FROM_DAYS(TO_DAYS('" . date('Y-m-d H:i:s') . "')-TO_DAYS(birth))) AS age FROM user WHERE user_id=" . guid());
 				$g_user = DB::fetch_row();*/

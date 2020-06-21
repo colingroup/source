@@ -6,9 +6,10 @@
         <div id="wide" class="box"><div class="bbt"><div class="bbb"><div class="bbl"><div class="bbr"><div class="bbtl"><div class="bbtr"><div class="bbbl"><div class="bbbr">
             <!-- begin_button -->
             <input class="btn {active_button}" type="button"  title="{button_title}" onclick="location = 'moderator.php?section={section}';"  value="{button_title}">
+            <strong class="">{mod_section}</strong>
             <!-- end_button -->
             <br><br>
-
+            
     <!-- begin_group_list -->
         <form method="post" action="{url_page}" >
             <input type="hidden" name="action" value="save">
@@ -47,7 +48,7 @@
                     <!-- end_photo -->
                 </div>
             </div>
-        <script>
+        <script>          
         function rotatePhoto(e){
             var id=$(e).attr('data-photo-id');
             var user_id=$(e).attr('data-user-id');

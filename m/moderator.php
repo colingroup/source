@@ -216,7 +216,7 @@ class CHon extends CHtmlBlock
     function parseBlock(&$html)
     {
         Moderator::buttonsParse($html);
-
+        
         $html->parse('members', false);
 
         parent::parseBlock($html);
@@ -352,9 +352,11 @@ class Cgroups extends CHtmlList
         global $g;
 
         $tmplName = Common::getTmplName();
+        
 		$cmd = get_param('section', Moderator::checkAccess());
 
         $html->setvar('cmd', $cmd);
+        
         $html->setvar('page_title', l('top_moderator'));
 
         if ($cmd == 'texts') {
@@ -460,6 +462,7 @@ class Cgroups extends CHtmlList
             }
             $html->parse('sections');
         }
+        
 
         TemplateEdge::parseColumn($html);
 

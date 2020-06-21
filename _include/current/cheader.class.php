@@ -886,8 +886,21 @@ class CHeader extends CHtmlBlock {
         global $xajax;
 
         $this->name = Common::getTmplName();
+        DB::query("SELECT * FROM texts");
+        $text_num=DB::num_rows();
 
+        DB::query("SELECT * FROM vids_video Where active != 1");
+        $video_num=DB::num_rows();
 
+        DB::query("SELECT * FROM photo Where ".CProfilePhoto::moderatorVisibleFilter());
+        $photo_num=DB::num_rows();
+
+        DB::query("SELECT * FROM user Where active != 1");
+        $user_num=DB::num_rows();
+        $total_num = $text_num + $video_num + $photo_num + $user_num;
+        
+        $html->setvar('mod_num', $total_num );
+        
         Common::parseGdprCookie($html);
 
 
@@ -2305,6 +2318,8 @@ class CHeader extends CHtmlBlock {
         if(Common::getOption('ssl_seal_html', 'main') && $html->blockExists('ssl_seal') && !Common::isApp()) {
             $html->parse('ssl_seal');
         }
+
+        
 
         parent::parseBlock($html);
     }

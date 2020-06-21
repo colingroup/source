@@ -289,7 +289,7 @@ class Cgroups extends CHtmlList
 						   LEFT JOIN user AS u ON u.user_id = c.user_id";
 
 			$this->m_sql = $sql;
-			$this->m_sql_count = $sqlCount;
+            $this->m_sql_count = $sqlCount;
 		}
 
         //$this->m_debug = "Y";
