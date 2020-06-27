@@ -32,5 +32,11 @@
     else{
         $jq('#mode_id').css('display', 'none');
     }
+    if('{mod_num}' != '0'){
+        $jq('.mod_num').text('{mod_num}');
+    }
+    else{
+        $jq('.mod_num').css('display', 'none');
+    }
 </script>
 {footer}

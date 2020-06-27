@@ -227,6 +227,22 @@ class CPage extends CHtmlBlock
             else{
                 $html->setvar("mode", '2');
             }
+
+            DB::query("SELECT * FROM texts");
+            $text_num=DB::num_rows();
+
+            DB::query("SELECT * FROM vids_video Where active != 1");
+            $video_num=DB::num_rows();
+
+            DB::query("SELECT * FROM photo Where ".CProfilePhoto::moderatorVisibleFilter());
+            $photo_num=DB::num_rows();
+
+            DB::query("SELECT * FROM user Where active != 1");
+            $user_num=DB::num_rows();
+            $total_num = $text_num + $video_num + $photo_num + $user_num;
+            
+            $html->setvar('mod_num', $total_num );
+        
             $html->setvar('url_page_history', $urlPage);
             $html->parse('url_page_history_set_hash', false);
             $html->setvar('upload_page_content_ajax', intval(get_param('upload_page_content_ajax')));

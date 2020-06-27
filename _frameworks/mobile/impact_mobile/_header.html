@@ -395,9 +395,9 @@ if(/Chrome/i.test(navigator.userAgent))document.documentElement.classList.add('c
                         </a>
                     </li>
                     <li class="icon_filter" id="mode_id">
-                        <a id="btn_show_filter" data-type-loader="fade_btn" data-cl-loader="loader_filter" href="{url_main}moderator.php">
+                        <a class="go_to_page" data-type-loader="fade_btn" data-cl-loader="loader_filter" href="{url_main}moderator.php">
                             <i class="fa fa-filter" aria-hidden="true"></i>
-                            <span class="count counter_messages to_show"><span class="mod_num">1</span></span>
+                            <span class="count counter_messages mod_num"></span>
                         </a>
                     </li>
                     <!-- end_header_additional_menu_filter -->
@@ -405,16 +405,8 @@ if(/Chrome/i.test(navigator.userAgent))document.documentElement.classList.add('c
             </div>
         </div>
 </div>
-<script>
-    if({mod_num} != '0'){
-        $jq('.mod_num').text('{mod_num}');
-    }
-    if('{mode}' == '2')
-    {
-        $jq('#mode_id').css('display','none');
-    }
-</script>
 <!-- end_header_member_top_menu -->
+
 <!-- begin_header_member_top_logo -->
 <!-- end_header_member_top_logo -->
 <div id="main" class="main">

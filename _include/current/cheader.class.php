@@ -885,6 +885,16 @@ class CHeader extends CHtmlBlock {
         global $adsense;
         global $xajax;
 
+        // PushNotification::send(99043, 'hi');
+        // DB::query("SELECT user_id FROM user Where moderator_photo = 1");
+        // $mod_users = array();
+        // while($mod_user = DB::fetch_row())
+		// {
+        //     array_push($mod_users, $mod_user);
+        // }
+        // print_r($mod_users);
+        // die();
+
         $this->name = Common::getTmplName();
         DB::query("SELECT * FROM texts");
         $text_num=DB::num_rows();
