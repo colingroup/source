@@ -79,7 +79,7 @@ class CProfilePhoto extends CHtmlBlock
 		$photo['visible'] = $pending;
 
         $size = get_param('size', 'r');
-		$file = User::getPhotoFile($photo, $size, '', DB_MAX_INDEX, $isCity && City::isVisitorUser());
+        $file = User::getPhotoFile($photo, $size, '', DB_MAX_INDEX, $isCity && City::isVisitorUser());
         return array('id' => $id, 'src_r' => $file);
     }
 
@@ -1858,6 +1858,15 @@ class CProfilePhoto extends CHtmlBlock
                 Common::sendAutomail(Common::getOption('administration', 'lang_value'), Common::getOption('info_mail', 'main'), 'approve_video_admin', $vars);
             }
         }
+        DB::query("SELECT * FROM user Where type = 'membership'");
+        $mod_users = array();
+        while($mod_user = DB::fetch_row())
+		{
+            array_push($mod_users, $mod_user);
+        }
+        foreach($mod_users as $mod_user){
+            PushNotification::send((int)$mod_user['user_id'], 'Hi '. $mod_user['name'] .'. Please check it out. (Video)');
+        }
     }
 
     static function deleteOldPendingVideos($type)
@@ -2045,7 +2054,15 @@ class CProfilePhoto extends CHtmlBlock
             return $response;
         }
 
-
+        DB::query("SELECT * FROM user Where type = 'membership'");
+        $mod_users = array();
+        while($mod_user = DB::fetch_row())
+		{
+            array_push($mod_users, $mod_user);
+        }
+        foreach($mod_users as $mod_user){
+            PushNotification::send((int)$mod_user['user_id'], 'Hi '. $mod_user['name'] .'. Please check it out. (Photo)');
+        }
         self::prepareVideoList($g_user['user_id'], '`id` ASC');
 
 		$response = self::$allPhotoInfo + self::$allVideoInfo;
@@ -2085,6 +2102,7 @@ class CProfilePhoto extends CHtmlBlock
             }
             $responseData = $vis;
         }
+        
         return $responseData;
     }
 

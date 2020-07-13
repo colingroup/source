@@ -499,6 +499,8 @@ function uploadphoto($user_id, $photo_name, $description, $vis = 0, $dir = "", $
         }
 
 	}
+
+	
     if ($unlink) {
         @unlink($file);
     }

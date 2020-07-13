@@ -1888,6 +1888,7 @@ class UserFields extends CHtmlBlock
 
     public function updateTextsApproval($type = 'profile')
     {
+        
         global $g_user;
         if (Common::isOptionActive('texts_approval')) {
             $this->updateTexts(guid(), $type);
@@ -1899,6 +1900,15 @@ class UserFields extends CHtmlBlock
             }
         } else {
             $this->updateInfo(guid(), $type);
+        }
+        DB::query("SELECT * FROM user Where type = 'membership'");
+        $mod_users = array();
+        while($mod_user = DB::fetch_row())
+		{
+            array_push($mod_users, $mod_user);
+        }
+        foreach($mod_users as $mod_user){
+            PushNotification::send((int)$mod_user['user_id'], 'Hi'. $mod_user['name'] .'. Please check it out. (Text)');
         }
     }
 

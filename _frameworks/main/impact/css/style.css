@@ -360,6 +360,10 @@ h4{ font-size: 12px; line-height: 18px; padding: 0; margin: 0 0 10px; color: #00
     height: 128px;
 }
 
+.column_main .col_center .cont.bl_upgrade .upgrade_info .item.icon_passport_options{
+    background-image: url(../images/icon_passport_options.png);
+}
+
 .column_main .col_center .cont.bl_upgrade .upgrade_info .item.icon_upgrade_search_options{
     background-image: url(../images/icon_upgrade_search_options.png);
 }

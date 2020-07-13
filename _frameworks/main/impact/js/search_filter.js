@@ -113,6 +113,11 @@ $(function(){
 	$jq('#search_cont').addClass('to_show');
 
 	$('.profile_city_choose').one('click', function(){
+        // console.log("here");
+        if(!isSuperPowers){
+            window.location.href=urlPageUpgrade;
+            return false;
+        }
         var pp_choose_city=$('#pp_choose_city')
 			.modalPopup({css:{zIndex:1001},shCss:{}, wrCss:{}, wrClass:'wrapper_custom', shClass:'pp_shadow_white'})
 			.open();

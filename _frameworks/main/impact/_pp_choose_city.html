@@ -173,6 +173,11 @@ var param = ['geo_countries', 'geo_states', 'geo_cities'],
     }
 
     $('.profile_city_choose').click(function(){
+        // console.log("here1");
+        if(!isSuperPowers){
+            window.location.href=urlPageUpgrade;
+            return false;
+        }
         setCountry();
         return false;
     });

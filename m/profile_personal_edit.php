@@ -19,6 +19,7 @@ class CProfilePersonal extends UserFields
         $responseData = false;
         $isResponseAjax = get_param('ajax');
         $cmd = get_param('cmd');
+        
         if ($isResponseAjax && $cmd == 'update') {
             if ($g_user['user_id']) {
                 $uid = $g_user['user_id'];

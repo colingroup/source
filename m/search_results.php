@@ -553,39 +553,56 @@ $user['country'] = (int) get_param("country", 0);
 $peopleNearby = get_param_int('people_nearby');
 
 $maxDistance = Common::getOption('max_search_distance');
-if ($peopleNearby) {
-    $userLocation = array('country' => 0, 'state' => 0, 'city' => 0);
+if(User::isSuperPowers()) {
+    if ($peopleNearby) {
+        $userLocation = array('country' => 0, 'state' => 0, 'city' => 0);
+        if($distance == 0){//In the whole city
+            $whereLocation = " AND u.geo_position_city_id = " . to_sql(guser('geo_position_city_id'));
+        } elseif (Common::getOption('max_filter_distance') == 'max_search_country' && $distance > $maxDistance) {//In the whole country
+            $whereLocation = " AND u.geo_position_country_id = " . to_sql(guser('geo_position_country_id'));
+        } else {
+            $whereLocation = getInRadiusWhere($distance);
+        }
+    } else {
+        if($distance > $maxDistance && $user['city']>0) {
+            $user['city'] = 0;
+            $user['state'] = 0;
+        }
+
+        $allCountriesSearch = get_param('all_countries',0);
+
+        if($allCountriesSearch==1){
+            $user['city'] = 0;
+            $user['state'] = 0;
+            $user['country'] = 0;
+        }
+
+        // search only by distance from selected city
+        $whereLocation = '';
+        if($distance && $user['city'])
+        {
+            // find MAX geo values
+            $whereLocation = inradius($user['city'], $distance);
+            $from_add .= " LEFT JOIN geo_city AS gc ON gc.city_id = u.city_id";
+        } else {
+            $whereLocation = Common::getWhereSearchLocation($user);
+        }
+    }
+}
+else{
+
+    $geoCityInfo = IP::geoInfoCity();
+    $gUserCountryId = $geoCityInfo['country_id'];
+    $gUserCityId = $geoCityInfo['city_id'];
+    
     if($distance == 0){//In the whole city
-        $whereLocation = " AND u.geo_position_city_id = " . to_sql(guser('geo_position_city_id'));
+        $whereLocation = " AND u.geo_position_city_id = " . to_sql($gUserCityId);
     } elseif (Common::getOption('max_filter_distance') == 'max_search_country' && $distance > $maxDistance) {//In the whole country
-        $whereLocation = " AND u.geo_position_country_id = " . to_sql(guser('geo_position_country_id'));
+        $whereLocation = " AND u.geo_position_country_id = " . to_sql($gUserCountryId);
     } else {
         $whereLocation = getInRadiusWhere($distance);
     }
-} else {
-    if($distance > $maxDistance && $user['city']>0) {
-        $user['city'] = 0;
-        $user['state'] = 0;
-    }
-
-    $allCountriesSearch = get_param('all_countries',0);
-
-    if($allCountriesSearch==1){
-        $user['city'] = 0;
-        $user['state'] = 0;
-        $user['country'] = 0;
-    }
-
-    // search only by distance from selected city
-    $whereLocation = '';
-    if($distance && $user['city'])
-    {
-        // find MAX geo values
-        $whereLocation = inradius($user['city'], $distance);
-        $from_add .= " LEFT JOIN geo_city AS gc ON gc.city_id = u.city_id";
-    } else {
-        $whereLocation = Common::getWhereSearchLocation($user);
-    }
+    
 }
 
 $onlyPhotos = Common::isOptionActive('no_profiles_without_photos_search');

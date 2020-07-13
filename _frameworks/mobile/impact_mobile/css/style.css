@@ -551,6 +551,7 @@ white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: calc(100%
 .bl_upgrade ul li strong{ font-weight: bold; display:block; padding-bottom: 5px; }
 .bl_upgrade ul li img{ margin: 0 10px 0 0; }
 
+.bl_upgrade ul li.icon_passport_options {background: url(../images/icon_passport.png) 0 50% no-repeat;}
 .bl_upgrade ul li.icon_upgrade_city {background: url(../images/icon_upgrade_city.png) 0 50% no-repeat;}
 .bl_upgrade ul li.icon_upgrade_search_options {background: url(../images/icon_upgrade_search_options.png) 0 50% no-repeat;}
 .bl_upgrade ul li.icon_upgrade_who_likes_you {background: url(../images/icon_upgrade_who_likes_you.png) 0 50% no-repeat;}

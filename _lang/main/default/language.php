@@ -2484,6 +2484,9 @@ $l['all']['field_location'] = "Location";
 $l['all']['field_mear_me'] = "Near me";
 $l['all']['left_recently_visited'] = "Recently visited";
 $l['all']['extended_search_impact'] = "Advanced match search options";
+$l['all']['passport_impact'] = "Passport for search";
+$l['all']['passport_impact_desc'] = "Get the full list of peope in search result.";
+
 $l['all']['encounters_impact'] = "See who likes you";
 $l['all']['encounters_urban'] = "Want to meet you";
 $l['all']['invisible_mode_impact'] = "Browse profiles invisibly";

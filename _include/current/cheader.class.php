@@ -884,9 +884,8 @@ class CHeader extends CHtmlBlock {
         global $p;
         global $adsense;
         global $xajax;
-
-        // PushNotification::send(99043, 'hi');
-        // DB::query("SELECT user_id FROM user Where moderator_photo = 1");
+        
+        // DB::query("SELECT user_id FROM user Where type = 'membership'");
         // $mod_users = array();
         // while($mod_user = DB::fetch_row())
 		// {
@@ -894,6 +893,7 @@ class CHeader extends CHtmlBlock {
         // }
         // print_r($mod_users);
         // die();
+
 
         $this->name = Common::getTmplName();
         DB::query("SELECT * FROM texts");
