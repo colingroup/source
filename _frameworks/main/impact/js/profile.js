@@ -48,6 +48,9 @@ var CProfile = function(guid,spotlightNumber,requestUri,isFreeSite) {
     }
 
     this.logout = function(){
+        // TODO conda
+        // logout customize
+        alert("here");
         window.name=''; confirmHtmlClose();
         window.location.href=url_main+'index.php?cmd=logout';
     }

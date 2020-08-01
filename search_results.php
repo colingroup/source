@@ -561,7 +561,6 @@ if(User::isSuperPowers()) {
             $whereLocation = getInRadiusWhere($distance);
         }
 
-        
     } else {
         if($distance > $maxDistance && $user['city']>0) {
             $user['city'] = 0;
@@ -1014,11 +1013,15 @@ if ($g_user['user_id']) {
                 $userSearchFiltersOrdered[$key] = $userSearchFilters[$key];
             }
         }
-
+        // set nearby  = 1 if logged out
+        if(true) {
+            $userSearchFiltersOrdered['people_nearby']['value'] = 1;
+        }
         $filter = json_encode($userSearchFiltersOrdered);
         //echo '<br><br>FILTER>' . $filter . '<br><br>';
         // update if new only
         if(guser('user_search_filters') != $filter) {
+
             User::updateParamsFilter('user_search_filters', $filter);
             $userSearchFiltersMobile = json_encode($userSearchFiltersMobile);
             if (guser('user_search_filters_mobile') != $userSearchFiltersMobile) {

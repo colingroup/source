@@ -240,6 +240,7 @@ var confirmHtmlClose = closeAlert = alertHtmlClose = function(e) {
 }
 
 var confirmCustom = confirmHtml = function(msg, handler, hCancel_or_title, title, btnOk, icon) {
+
 	closeAlert();
     btnOk=btnOk||ALERT_HTML_OK;
     var noCancel=(typeof(hCancel_or_title) != 'function'),
@@ -261,10 +262,11 @@ var confirmCustom = confirmHtml = function(msg, handler, hCancel_or_title, title
                         '<div class="cl"></div>'+
                     '</div>'+
                 '</div>'+
-            '</div>').modalPopup({wrClass: 'alert_wrapper',wrCss:{zIndex:1001}}).open()
-	$('button', $pp).click(closeAlert)
+            '</div>').modalPopup({wrClass: 'alert_wrapper',wrCss:{zIndex:1001}}).open();
+	$('button', $pp).click(closeAlert);
 	$('.confirm_ok', $pp).click(handler);
-	if (!noCancel) $('.confirm_close', $pp).click(hCancel_or_title)
+
+	if (!noCancel) $('.confirm_close', $pp).click(hCancel_or_title);
 }
 
 var alertCustom = alertHtml = function(msg, shadow, title, hClose, icon, btnOk, css)

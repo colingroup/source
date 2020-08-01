@@ -163,13 +163,14 @@ class CSearchResults extends CUsersInfo
                         }
                         $dataLokingFor['city'] = User::getLocationFiltersMobile($uid, $guserLocation);
                     }
-                    // here1
-                    $isAjaxRequestPage = get_param('ajax_page');
-                    if (!$isAjaxRequestPage) {
-                        $geoCityInfo = IP::geoInfoCity();
-                        $dataLokingFor['city'] = $geoCityInfo['3'];
-                        $dataLokingFor['country'] = $geoCityInfo['3'];
-                    }
+//                    // here1
+//                    $isAjaxRequestPage = get_param('ajax_page');
+//                    if (!$isAjaxRequestPage) {
+//                        $geoCityInfo = IP::geoInfoCity();
+//                        $dataLokingFor['city'] = $geoCityInfo['3'];
+//                        $dataLokingFor['country'] = $geoCityInfo['3'];
+//                    }
+
                     $searchByRadiusAllCountry = (isset($location['radius']) && ($location['radius'] > intval(Common::getOption('max_search_distance'))));
                     if ($searchByRadiusAllCountry) {
                         if ($isPeopleNearBy) {
@@ -259,9 +260,9 @@ class CPage extends CHtmlBlock
             $html->setvar('url_page_history', $urlPage);
             $html->parse('url_page_history_set_hash', false);
             $html->setvar('upload_page_content_ajax', intval(get_param('upload_page_content_ajax')));
-            // here1
-            $cityInfo = IP::geoInfoCity();
-            $html->setvar('ip_city_id', $cityInfo['country_id']);
+//            // here1
+//            $cityInfo = IP::geoInfoCity();
+//            $html->setvar('ip_city_id', $cityInfo['country_id']);
             $html->setvar('is_super_powers', User::isSuperPowers());
         }
 
