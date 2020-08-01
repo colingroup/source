@@ -63,6 +63,7 @@ var $layerBlockPage,$loaderLayerBlockPage,$pageShadowEmpty;
 $(function(){
     $(window).on('popstate',function(){
         //popup send_message
+
         console.log('POPSTATE:', pageHistory, location.href, curPageData.url, location.href.indexOf(curPageData.url.split('#')[0]) !== -1);
         if (ajax_login_status) {
             if($('.popup.send_message:visible')[0]){

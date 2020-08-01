@@ -547,17 +547,12 @@ if ($notActiveLocationFilterSocial) {
 if(User::isSuperPowers()) {
     if ($peopleNearby) {
         $userLocation = array('country' => 0, 'state' => 0, 'city' => 0);
-        if ($guid) {
-            
-            $gUserCountryId = guser('geo_position_country_id');
-            $gUserCityId = guser('geo_position_city_id');
-            
-        } else {
+        
             $geoCityInfo = IP::geoInfoCity();
             $gUserCountryId = $geoCityInfo['country_id'];
             $gUserCityId = $geoCityInfo['city_id'];
             
-        }
+        
         if($distance == 0){//In the whole city
             $whereLocation = " AND u.geo_position_city_id = " . to_sql($gUserCityId);
         } elseif (Common::getOption('max_filter_distance') == 'max_search_country' && $distance > $maxDistance) {//In the whole country
@@ -565,6 +560,8 @@ if(User::isSuperPowers()) {
         } else {
             $whereLocation = getInRadiusWhere($distance);
         }
+
+        
     } else {
         if($distance > $maxDistance && $user['city']>0) {
             $user['city'] = 0;
@@ -592,6 +589,7 @@ if(User::isSuperPowers()) {
         }
     }
 }
+
 else{
     $geoCityInfo = IP::geoInfoCity();
     $gUserCountryId = $geoCityInfo['country_id'];
@@ -605,8 +603,6 @@ else{
         $whereLocation = getInRadiusWhere($distance);
     }
 
-    // Here
-    // die();
 }
 $from_add .= " LEFT JOIN userinfo AS i ON u.user_id=i.user_id ";
            //. " LEFT JOIN geo_city AS gc ON gc.city_id = u.city_id";

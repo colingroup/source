@@ -18,7 +18,7 @@ if (get_param('audio')) {
 }
 
 $cmd = get_param('cmd');
-if($cmd == 'lang') {
+if ($cmd == 'lang') {
     header('Content-Type: text/xml; charset=UTF-8');
     header('Cache-Control: no-cache, must-revalidate');
 
@@ -32,10 +32,10 @@ if($cmd == 'lang') {
 
 class CAc extends CHtmlBlock
 {
-	function parseBlock(&$html)
-	{
-		global $g;
-		global $g_user;
+    function parseBlock(&$html)
+    {
+        global $g;
+        global $g_user;
 
         $callUid = intval(get_param('id', 0));
         $clientId = $g_user['user_id'];
@@ -47,7 +47,7 @@ class CAc extends CHtmlBlock
         DB::query($sql);
         $isParseChat = true;
         $groupInfo = false;
-		if ($row = DB::fetch_row()){
+        if ($row = DB::fetch_row()) {
             $name = $row['name'];
             $age = User::getInfoBasic($row['user_id'], 'age');
             $userTitle = $name . ', ' . $age;
@@ -76,19 +76,19 @@ class CAc extends CHtmlBlock
             Chat::setType();
             $sql = "DELETE FROM `audio_reject`
                      WHERE `to_user` = " . to_sql($g_user['user_id'])
-                   . " AND `from_user` = " . to_sql($row['user_id'])
-                   . ' AND `group_id` = ' . to_sql($groupId);
+                . " AND `from_user` = " . to_sql($row['user_id'])
+                . ' AND `group_id` = ' . to_sql($groupId);
             DB::execute($sql);
 
-			if (User::isOnline($callUid, $row)) {
-				#foreach ($row as $k => $v) $html->setvar($k, $v);
-				$html->setvar('enemy_name', $row['name']);
-				$html->setvar('my_name', $g_user['name']);
-			} else {
+            if (User::isOnline($callUid, $row)) {
+                #foreach ($row as $k => $v) $html->setvar($k, $v);
+                $html->setvar('enemy_name', $row['name']);
+                $html->setvar('my_name', $g_user['name']);
+            } else {
                 $isParseChat = false;
                 $html->parse('alert_js');
             }
-		} else {
+        } else {
             Common::toHomePage();
         }
 
@@ -98,7 +98,7 @@ class CAc extends CHtmlBlock
             $typeChat = Common::getOption('type_media_chat');
         }
 
-    	$html->setvar('type_chat', $typeChat);
+        $html->setvar('type_chat', $typeChat);
         if ($typeChat == 'webrtc') {
 
             if ($groupInfo && $clientId == $groupInfo['user_id']) {
@@ -140,8 +140,8 @@ class CAc extends CHtmlBlock
 
         TemplateEdge::parseColumn($html);
 
-		parent::parseBlock($html);
-	}
+        parent::parseBlock($html);
+    }
 }
 
 
@@ -151,11 +151,11 @@ $page = new CAc("", $tmpl);
 $header = new CHeader("header", $g['tmpl']['dir_tmpl_main'] . "_header.html");
 $page->add($header);
 
-if (Common::isParseModule('profile_colum_narrow')){
+if (Common::isParseModule('profile_colum_narrow')) {
     $columnNarrow = new CProfileNarowBox('profile_column_narrow', $g['tmpl']['dir_tmpl_main'] . '_profile_column_narrow.html');
     $page->add($columnNarrow);
 }
-if (Common::isParseModule('profile_head')){
+if (Common::isParseModule('profile_head')) {
     $profileHead = new ProfileHead('profile_head', $g['tmpl']['dir_tmpl_main'] . '_profile_head.html');
     $profileHead::setUserId(get_param('id', 0));
     $page->add($profileHead);

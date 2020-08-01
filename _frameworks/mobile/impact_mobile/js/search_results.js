@@ -294,6 +294,7 @@ var CSearchResults = function() {
             wc=$count.find('span').width();
         $count.width(wc);
         $jq('#search_head').find('.info').width($jq('#search_head').width() - wc - 5);
+
     }
 
     /* Filter */
@@ -440,6 +441,14 @@ var CSearchResults = function() {
         }).change();
 
         $('#perform_action_search').click(function(){
+            // here1
+            if($jq('#country').val() != "people_nearby" && $jq('#country').val() != $jq('#ip_city_id').val()){
+                if($jq('#isSuperPowers').val() == 0){
+                    window.location.href=urlPageUpgrade;
+                    return false;
+                }
+            }
+            
             $this.hideNoOneFound();
             showLayerBlockPageNoLoader();
             var $btn=$(this).addLoader().prop('disabled', true);
@@ -456,6 +465,16 @@ var CSearchResults = function() {
                         prevPL = nextPL = false;
                         $jq('#search_switch').find('.loader_search_list').remove();
                         $jq('#search_head').empty().html($data.find('#search_head').html());
+
+                        // TODO conda
+                        // user search number
+                        var $count=$jq('#search_head').find('.count');
+                        if('{mode}' == '1'){
+                            console.log("moderator");
+                        }
+                        else{
+                            $count.remove();
+                        }
 
                         var $blPage=$data.find('.bl_list_photo');
                         $this.pageBl.empty().html($blPage.html());

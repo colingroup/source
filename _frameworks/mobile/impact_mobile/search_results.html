@@ -13,6 +13,9 @@
             uploadContentAjax:'{upload_page_content_ajax}'*1
         });
     </script>
+    <input type="hidden" id="ip_city_id" value="{ip_city_id}">
+    <input type="hidden" id="isSuperPowers" value="0">
+    
     <div id="main_content_block" class="bl_profile <!-- begin_block_target_main -->target<!-- end_block_target_main -->">
         <div id="search_switch"  <!-- begin_block_target -->class="target"<!-- end_block_target -->>
         {users_list}
@@ -25,13 +28,21 @@
         clSearch.init();
     </script>
 </div>
+
 <script>
+    if('{is_super_powers}') $jq('#isSuperPowers').val('{is_super_powers}');
+    
     if('{mode}' == '1'){
         console.log("moderator");
     }
     else{
+        console.log("here");
+        // TODO conda
+        // user search number
+        $jq('#search_head .count').remove();
         $jq('#mode_id').css('display', 'none');
     }
+
     if('{mod_num}' != '0'){
         $jq('.mod_num').text('{mod_num}');
     }

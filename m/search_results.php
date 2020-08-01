@@ -36,7 +36,7 @@ if (get_param('uid') != '') {
 }
 
 CStatsTools::count('user_search_used');
-$g['to_head'][] = '<link rel="stylesheet" href="'.$g['tmpl']['url_tmpl_mobile'].'css/search.css" type="text/css" media="all"/>';
+$g['to_head'][] = '<link rel="stylesheet" href="' . $g['tmpl']['url_tmpl_mobile'] . 'css/search.css" type="text/css" media="all"/>';
 $g['tmpl']['header_title_link'] = $g['path']['url_main'] . 'search.php';
 
 //if (defined('IS_DEMO')) {
@@ -49,7 +49,7 @@ $isFreeSite = Common::isOptionActive('free_site');
 
 $name = trim(get_param('name'));
 $uidRequest = User::getRequestUserId();
-if(($display == 'profile' || $display == 'profile_info' || $display == 'wall') && $uidRequest) {
+if (($display == 'profile' || $display == 'profile_info' || $display == 'wall') && $uidRequest) {
     $patch = '';
     if ($display == 'profile' || $display == 'profile_info') {
         $patch = 'profile_view.php?user_id=' . $uidRequest . '&display=' . $display;
@@ -63,21 +63,23 @@ if(($display == 'profile' || $display == 'profile_info' || $display == 'wall') &
 
 class CSearchFilter extends UserFields
 {
-	function parseBlock(&$html)
-	{
+    function parseBlock(&$html)
+    {
+
+
         $this->parseMobileAdvancedFilter($html);
 
-		parent::parseBlock($html);
-	}
+        parent::parseBlock($html);
+    }
 }
 
 class CSearchResults extends CUsersInfo
 {
-	var $parsed_item_n;
-	var $m_city_postfix = ",<br/>";
+    var $parsed_item_n;
+    var $m_city_postfix = ",<br/>";
 
-	function onItem(&$html, $row, $i, $last)
-	{
+    function onItem(&$html, $row, $i, $last)
+    {
         if ($html->varExists('from_page')) {
             $html->setvar('from_page', 'search');
         }
@@ -85,19 +87,19 @@ class CSearchResults extends CUsersInfo
             $html->setvar('ref_link', '&ref=people_nearby');
         }
 
-		parent::onItem($html, $row, $i, $last);
+        parent::onItem($html, $row, $i, $last);
         $html->parse('users_list_item_url', false);
 
-		++$this->parsed_item_n;
-	}
+        ++$this->parsed_item_n;
+    }
 
-	function parseBlock(&$html)
-	{
+    function parseBlock(&$html)
+    {
         $isAjaxRequest = get_param('ajax', 0);
         $display = get_param('display');
-		$this->parsed_item_n = 1;
+        $this->parsed_item_n = 1;
 
-		//if ($GLOBALS['isUrban']) $html->setvar('offset_real', max(1, (int) $this->m_offset));
+        //if ($GLOBALS['isUrban']) $html->setvar('offset_real', max(1, (int) $this->m_offset));
         if ($html->varExists('offset_real')) {
             $html->setvar('offset_real', max(1, intval($this->m_offset)));
         }
@@ -148,21 +150,33 @@ class CSearchResults extends CUsersInfo
                     $dataLokingFor['radius'] = get_param('radius');
 
                     if ($isPeopleNearBy) {
-                        $dataLokingFor['city'] = l(guser('geo_position_city'));
+                        // $dataLokingFor['city'] = l(guser('geo_position_city'));
+                        $geoCityInfo = IP::geoInfoCity();
+                        $dataLokingFor['city'] = $geoCityInfo['3'];
+                        $dataLokingFor['country'] = $geoCityInfo['3'];
                         $dataLokingFor['all_items_select'] = 0;
                     } else {
-                        if(isset($location['city']['value']) && $location['city']['value'] == 0){
+                        if (isset($location['city']['value']) && $location['city']['value'] == 0) {
                             $dataLokingFor['all_items_select'] = 1;
                         } else {
                             $dataLokingFor['all_items_select'] = 0;
                         }
                         $dataLokingFor['city'] = User::getLocationFiltersMobile($uid, $guserLocation);
                     }
-
+                    // here1
+                    $isAjaxRequestPage = get_param('ajax_page');
+                    if (!$isAjaxRequestPage) {
+                        $geoCityInfo = IP::geoInfoCity();
+                        $dataLokingFor['city'] = $geoCityInfo['3'];
+                        $dataLokingFor['country'] = $geoCityInfo['3'];
+                    }
                     $searchByRadiusAllCountry = (isset($location['radius']) && ($location['radius'] > intval(Common::getOption('max_search_distance'))));
-                    if($searchByRadiusAllCountry) {
+                    if ($searchByRadiusAllCountry) {
                         if ($isPeopleNearBy) {
                             $dataLokingFor['country'] = l(guser('geo_position_country'));
+                            $geoCityInfo = IP::geoInfoCity();
+                            $dataLokingFor['city'] = $geoCityInfo['3'];
+                            $dataLokingFor['country'] = $geoCityInfo['3'];
                         } else {
                             $dataLokingFor['country'] = User::getLocationFiltersMobile($uid, $guserLocation, $searchByRadiusAllCountry);
                         }
@@ -173,6 +187,7 @@ class CSearchResults extends CUsersInfo
                     $foundInfo = l('found_info_' . $display);
                 }
                 $html->setvar('found_info', $foundInfo);
+                // $html->setvar('found_info', $foundInfo);
             }
             if ($html->varExists('found_no_one')) {
                 $foundNoOne = l('found_no_one');
@@ -186,20 +201,19 @@ class CSearchResults extends CUsersInfo
             }
         }
 
-		parent::parseBlock($html);
-	}
+        parent::parseBlock($html);
+    }
 
-	function onPostParse(&$html,$row=array())
-	{
-		for($i = $this->parsed_item_n; $i <= 5; ++$i)
-		{
-			if($this->row_breaks && !($i % $this->row_breaks_n_cols))
-				$html->setvar('row_break', '</tr><tr>');
-			else
-				$html->setvar('row_break', '');
-			$html->parse('users_list_no_item');
-		}
-	}
+    function onPostParse(&$html, $row = array())
+    {
+        for ($i = $this->parsed_item_n; $i <= 5; ++$i) {
+            if ($this->row_breaks && !($i % $this->row_breaks_n_cols))
+                $html->setvar('row_break', '</tr><tr>');
+            else
+                $html->setvar('row_break', '');
+            $html->parse('users_list_no_item');
+        }
+    }
 }
 
 
@@ -212,8 +226,8 @@ if ($isAjaxRequest) {
 
 class CPage extends CHtmlBlock
 {
-	function parseBlock(&$html)
-	{
+    function parseBlock(&$html)
+    {
         $display = get_param('display');
         if ($html->varExists('url_page_history')) {
             $urlPage = Common::pageUrl('search_results');
@@ -223,33 +237,36 @@ class CPage extends CHtmlBlock
             if (Moderator::checkAccess(true)) {
                 $html->setvar("mode", '1');
                 $html->parse('moderator');
-            }
-            else{
+            } else {
                 $html->setvar("mode", '2');
             }
 
             DB::query("SELECT * FROM texts");
-            $text_num=DB::num_rows();
+            $text_num = DB::num_rows();
 
             DB::query("SELECT * FROM vids_video Where active != 1");
-            $video_num=DB::num_rows();
+            $video_num = DB::num_rows();
 
-            DB::query("SELECT * FROM photo Where ".CProfilePhoto::moderatorVisibleFilter());
-            $photo_num=DB::num_rows();
+            DB::query("SELECT * FROM photo Where " . CProfilePhoto::moderatorVisibleFilter());
+            $photo_num = DB::num_rows();
 
             DB::query("SELECT * FROM user Where active != 1");
-            $user_num=DB::num_rows();
+            $user_num = DB::num_rows();
             $total_num = $text_num + $video_num + $photo_num + $user_num;
-            
-            $html->setvar('mod_num', $total_num );
-        
+
+            $html->setvar('mod_num', $total_num);
+
             $html->setvar('url_page_history', $urlPage);
             $html->parse('url_page_history_set_hash', false);
             $html->setvar('upload_page_content_ajax', intval(get_param('upload_page_content_ajax')));
+            // here1
+            $cityInfo = IP::geoInfoCity();
+            $html->setvar('ip_city_id', $cityInfo['country_id']);
+            $html->setvar('is_super_powers', User::isSuperPowers());
         }
 
-		parent::parseBlock($html);
-	}
+        parent::parseBlock($html);
+    }
 }
 
 $optionTmplName = Common::getOption('name', 'template_options');
@@ -258,8 +275,8 @@ $page = new CPage("", $g['tmpl']['dir_tmpl_mobile'] . $tmpl);
 
 if ($display == 'encounters') {
     $listTmpl = array('main' => $g['tmpl']['dir_tmpl_mobile'] . '_encounters_info.html',
-                      'items' => $g['tmpl']['dir_tmpl_mobile'] . '_encounters_items.html'
-                );
+        'items' => $g['tmpl']['dir_tmpl_mobile'] . '_encounters_items.html'
+    );
     if (!Common::isOptionActive('profile_visitor_no_block_report', 'template_options')) {
         $listTmpl['user_block_report'] = $g['tmpl']['dir_tmpl_mobile'] . '_user_block_report.html';
     }
@@ -270,9 +287,9 @@ if ($display == 'encounters') {
     $list = new CUsersProfile('users_list', $listTmpl);
 } elseif ($display == 'rate_people') {
     $listTmpl = array('main' => $g['tmpl']['dir_tmpl_mobile'] . '_rate_people_info.html',
-                      'items' => $g['tmpl']['dir_tmpl_mobile'] . '_rate_people_items.html',
-                      'user_block_report' => $g['tmpl']['dir_tmpl_mobile'] . '_user_block_report.html',
-                );
+        'items' => $g['tmpl']['dir_tmpl_mobile'] . '_rate_people_items.html',
+        'user_block_report' => $g['tmpl']['dir_tmpl_mobile'] . '_user_block_report.html',
+    );
     if ($isAjaxRequest) {
         $listTmpl = $g['tmpl']['dir_tmpl_mobile'] . '_rate_people_items.html';
     }
@@ -285,32 +302,24 @@ if ($display == 'encounters') {
 if (!isset($g_user['user_id'])) $g_user['user_id'] = 0;
 $list->m_params = get_params_string();
 
-if ($g_user['user_id'] != 0)
-{
-	if (get_param("save_search", 0) == 1 and trim(get_param("search_name", "")) != "")
-	{
-		$name = to_sql(get_param("search_name", "Search name"), "Text");
-		$id = DB::result("SELECT id FROM search_save WHERE user_id=" . $g_user['user_id'] . " AND name=" . $name . "");
+if ($g_user['user_id'] != 0) {
+    if (get_param("save_search", 0) == 1 and trim(get_param("search_name", "")) != "") {
+        $name = to_sql(get_param("search_name", "Search name"), "Text");
+        $id = DB::result("SELECT id FROM search_save WHERE user_id=" . $g_user['user_id'] . " AND name=" . $name . "");
 
-		if ($id == 0)
-		{
-			$num_save = DB::result("SELECT COUNT(id) FROM search_save WHERE user_id=" . $g_user['user_id'] . "");
-			if ($num_save >= 10)
-			{
-				$page->m_html->setvar("save_message", "The maximum number of saved searches has been reached.");
-			}
-			else
-			{
-				$query = to_sql($list->m_params, "Text");
-				DB::execute("INSERT INTO search_save (name, user_id, query) VALUES (" . $name . ", " . $g_user['user_id'] . ", " . $query . ")");
-			}
-		}
-		else
-		{
-			$query = to_sql($list->m_params, "Text");
-			DB::execute("UPDATE search_save SET query=" . $query . " WHERE id=" . $id . "");
-		}
-	}
+        if ($id == 0) {
+            $num_save = DB::result("SELECT COUNT(id) FROM search_save WHERE user_id=" . $g_user['user_id'] . "");
+            if ($num_save >= 10) {
+                $page->m_html->setvar("save_message", "The maximum number of saved searches has been reached.");
+            } else {
+                $query = to_sql($list->m_params, "Text");
+                DB::execute("INSERT INTO search_save (name, user_id, query) VALUES (" . $name . ", " . $g_user['user_id'] . ", " . $query . ")");
+            }
+        } else {
+            $query = to_sql($list->m_params, "Text");
+            DB::execute("UPDATE search_save SET query=" . $query . " WHERE id=" . $id . "");
+        }
+    }
 }
 
 $whereCore = "1=1 ";
@@ -323,19 +332,19 @@ if ($isUrban && ($display == '' || $display == 'encounters' || $display == 'rate
     if (guid()) {
         $userInfo = null;
         $typeFilter = 'user_search_filters_mobile';
-        if(get_param('set_filter')) {
+        if (get_param('set_filter')) {
             $_GET['with_photo'] = intval(get_param('with_photo') != '');
             $_GET['offset'] = get_param('offset', 1);
             User::updateParamsFilterUser();
             //$userinfo = User::updateParamsFilterUserInfo($typeFilter);
             $userinfo = User::updateFilterAll(null, array('status', 'with_photo', 'country', 'state', 'city', 'radius', 'people_nearby'));
-			/*
+            /*
             if (get_param('city')) {
                 User::updateParamsFilterUserInfo('user_search_filters', $userinfo);
             }*/
         }
-		$filtersInfo = User::setGetParamsFilter($typeFilter, $userInfo);
-        if(json_encode($filtersInfo) != guser('user_search_filters_mobile')){
+        $filtersInfo = User::setGetParamsFilter($typeFilter, $userInfo);
+        if (json_encode($filtersInfo) != guser('user_search_filters_mobile')) {
             User::updateFilterAll();
         }
     } else {
@@ -347,6 +356,7 @@ if ($isUrban && ($display == '' || $display == 'encounters' || $display == 'rate
             }
         }
         $geoInfo = getDemoCapitalCountry();//IP::geoInfoCity();
+
         $_GET['country'] = get_param('country', $geoInfo['country_id']);
         $_GET['state'] = get_param('state', $geoInfo['state_id']);
         $_GET['city'] = get_param('city', $geoInfo['city_id']);
@@ -355,40 +365,46 @@ if ($isUrban && ($display == '' || $display == 'encounters' || $display == 'rate
     if ($withPhoto && $display != 'encounters' && $display != 'rate_people') {
         $order = "is_photo DESC, ";
     }
+    // $geoCityInfo = IP::geoInfoCity();
+    // $gUserCountryId = $geoCityInfo['country_id'];
+    // if($gUserCountryId == get_param('country'))
+    // {
+    //     if (!User::accessCheckFeatureSuperPowers('profile_visitors_paid')) {
+    //         redirect(Common::pageUrl('upgrade'));
+    //     }
+    // }
 }
 
-$user["p_orientation"] = (int) get_checks_param("p_orientation");
-if ($user["p_orientation"] > 0){
-	$where .= " AND " . $user["p_orientation"] . " & (1 << (cast(u.orientation AS signed) - 1))";
+$user["p_orientation"] = (int)get_checks_param("p_orientation");
+if ($user["p_orientation"] > 0) {
+    $where .= " AND " . $user["p_orientation"] . " & (1 << (cast(u.orientation AS signed) - 1))";
 }
 
-$user["p_relation"] = (int) get_checks_param("p_relation");
+$user["p_relation"] = (int)get_checks_param("p_relation");
 if ($user["p_relation"] != "0") {
-	$where .= " AND " . $user["p_relation"] . " & (1 << (relation - 1))";
+    $where .= " AND " . $user["p_relation"] . " & (1 << (relation - 1))";
 }
 
 $user['name'] = get_param("name_key", "");
 if ($user['name'] != "") {
-	$where .= " AND name LIKE '%" . to_sql($user['name'], "Plain") . "%'";
+    $where .= " AND name LIKE '%" . to_sql($user['name'], "Plain") . "%'";
 }
 
 $user['name'] = get_param("name", "");
 if ($user['name'] != "") {
-	$where .= " AND u.name=" . to_sql($user['name']) . "";
+    $where .= " AND u.name=" . to_sql($user['name']) . "";
 }
 
-$user['p_age_from'] = (int) get_param("p_age_from", 0);
-$user['p_age_to'] = (int) get_param("p_age_to", 0);
+$user['p_age_from'] = (int)get_param("p_age_from", 0);
+$user['p_age_to'] = (int)get_param("p_age_to", 0);
 $userAgeToSrc = $user['p_age_to'];
 if ($user['p_age_from'] == $g['options']['users_age']) $user['p_age_from'] = 0;
 if ($user['p_age_to'] == $g['options']['users_age_max']) $user['p_age_to'] = 10000;
-if ($user['p_age_from'] != 0)
-{
-	$where .= " AND u.birth <= " . to_sql(Common::ageToDate($user['p_age_from']));
+if ($user['p_age_from'] != 0) {
+    $where .= " AND u.birth <= " . to_sql(Common::ageToDate($user['p_age_from']));
 }
 
-if ($userAgeToSrc && $userAgeToSrc != $g['options']['users_age_max'])
-{
+if ($userAgeToSrc && $userAgeToSrc != $g['options']['users_age_max']) {
     $where .= " AND u.birth >= " . to_sql(Common::ageToDate($userAgeToSrc, true));
 }
 
@@ -450,22 +466,20 @@ foreach ($g['user_var'] as $k => $v)
 }*/
 
 UserFields::removeUnavailableField();
-foreach ($g['user_var'] as $k => $v){
-	$user[$k] = intval(get_param($k, ''));
+foreach ($g['user_var'] as $k => $v) {
+    $user[$k] = intval(get_param($k, ''));
 }
 $typeFields = array('from', 'checks', 'checkbox');
 $numCheckbox = 0;
 $from_add = '';
 $from_group = '';
-foreach ($g['user_var'] as $k => $v)
-{
-    if (in_array($v['type'], $typeFields) && $v['status'] == 'active')
-    {
-        if ($v['type'] == 'from'){
+foreach ($g['user_var'] as $k => $v) {
+    if (in_array($v['type'], $typeFields) && $v['status'] == 'active') {
+        if ($v['type'] == 'from') {
 
             $key = $k;
-			if (substr($key, 0, 2) == "p_") $key = substr($key, 2);
-			if (substr($key, -5) == "_from") $key = substr($key, 0, strlen($key) - 5);
+            if (substr($key, 0, 2) == "p_") $key = substr($key, 2);
+            if (substr($key, -5) == "_from") $key = substr($key, 0, strlen($key) - 5);
 
             $valFieldFrom = $user[$k];
 
@@ -475,22 +489,22 @@ foreach ($g['user_var'] as $k => $v)
             if ($valFieldTo) {
                 $where .= ' AND i.' . $key . '<=' . $valFieldTo;
 
-                if(!$valFieldFrom) {
+                if (!$valFieldFrom) {
                     $valFieldFrom = 1;
                 }
             }
 
-            if($valFieldFrom) {
+            if ($valFieldFrom) {
                 $where .= " AND i." . $key . ">=" . intval($valFieldFrom);
             }
 
-            if($valFieldFrom || $valFieldTo) {
+            if ($valFieldFrom || $valFieldTo) {
                 // save real value for defaul select value
                 $valFieldFrom = $user[$k];
 
                 $keyFilter = $k;
 
-                if(!$valFieldFrom) {
+                if (!$valFieldFrom) {
                     $keyFilter = $fieldTo;
                 }
 
@@ -501,41 +515,40 @@ foreach ($g['user_var'] as $k => $v)
 
                 //$userSearchFilters[$k] = array($user[$k], $valFieldsTo);
             }
-		} elseif ($v['type'] == 'checks' && $user[$k] != 0) {
-                $user[$k] = intval(get_checks_param($k));
-                if ($user[$k] != 0)
-				{
-					$key = $k;
-					if (substr($key, 0, 2) == "p_") $key = substr($key, 2);
+        } elseif ($v['type'] == 'checks' && $user[$k] != 0) {
+            $user[$k] = intval(get_checks_param($k));
+            if ($user[$k] != 0) {
+                $key = $k;
+                if (substr($key, 0, 2) == "p_") $key = substr($key, 2);
 
-                    $userSearchFilters[$k] = array(
-                        'field' => $key,
-                        'value' => get_param_array($k),
-                    );
+                $userSearchFilters[$k] = array(
+                    'field' => $key,
+                    'value' => get_param_array($k),
+                );
 
-                    if ($k != 'p_star_sign') {
-                        $where .= " AND " . to_sql($user[$k], 'Number') . " & (1 << (cast(i." . $key . " AS signed) - 1))";
-                    }
-				}
+                if ($k != 'p_star_sign') {
+                    $where .= " AND " . to_sql($user[$k], 'Number') . " & (1 << (cast(i." . $key . " AS signed) - 1))";
+                }
+            }
         } elseif ($v['type'] == 'checkbox' && $user[$k] != 0) {
-                $params = get_param_array($k);
-                foreach ($params as $key => $value) {
-                    if ($value == 0) {
-                        unset($params[$key]);
-                    }
+            $params = get_param_array($k);
+            foreach ($params as $key => $value) {
+                if ($value == 0) {
+                    unset($params[$key]);
                 }
-                if (!empty($params)){
-                    $userSearchFilters[$k] = array(
-                        'field' => $k,
-                        'value' => $params,
-                    );
-                    $nameTable = 'uck' . $numCheckbox;
-                    $from_add .= " LEFT JOIN users_checkbox AS " . $nameTable . " ON " . $nameTable . ".user_id = u.user_id AND " . $nameTable . ".field = " . to_sql($v['id'], 'Number') . " AND "  . $nameTable . ".value IN (" . implode($params, ',') . ")";
-                    $where .=  " AND " . $nameTable . ".user_id IS NOT NULL";
-                    $numCheckbox++;
-                }
+            }
+            if (!empty($params)) {
+                $userSearchFilters[$k] = array(
+                    'field' => $k,
+                    'value' => $params,
+                );
+                $nameTable = 'uck' . $numCheckbox;
+                $from_add .= " LEFT JOIN users_checkbox AS " . $nameTable . " ON " . $nameTable . ".user_id = u.user_id AND " . $nameTable . ".field = " . to_sql($v['id'], 'Number') . " AND " . $nameTable . ".value IN (" . implode($params, ',') . ")";
+                $where .= " AND " . $nameTable . ".user_id IS NOT NULL";
+                $numCheckbox++;
+            }
         }
-	}
+    }
 }
 
 if ($numCheckbox) {
@@ -546,32 +559,47 @@ $from_add = "LEFT JOIN userinfo AS i ON u.user_id=i.user_id" . $from_add;
 
 // IF active distance search, then exclude others
 // DISTANCE
-$distance = (int) get_param('radius', 0);
-$user['city'] = (int) get_param("city", 0);
-$user['state'] = (int) get_param("state", 0);
-$user['country'] = (int) get_param("country", 0);
+$distance = (int)get_param('radius', 0);
+$user['city'] = (int)get_param("city", 0);
+$user['state'] = (int)get_param("state", 0);
+$user['country'] = (int)get_param("country", 0);
 $peopleNearby = get_param_int('people_nearby');
 
 $maxDistance = Common::getOption('max_search_distance');
-if(User::isSuperPowers()) {
+if (User::isSuperPowers()) {
     if ($peopleNearby) {
         $userLocation = array('country' => 0, 'state' => 0, 'city' => 0);
-        if($distance == 0){//In the whole city
-            $whereLocation = " AND u.geo_position_city_id = " . to_sql(guser('geo_position_city_id'));
+
+        // if($distance == 0){//In the whole city
+        //     $whereLocation = " AND u.geo_position_city_id = " . to_sql(guser('geo_position_city_id'));
+        // } elseif (Common::getOption('max_filter_distance') == 'max_search_country' && $distance > $maxDistance) {//In the whole country
+        //     $whereLocation = " AND u.geo_position_country_id = " . to_sql(guser('geo_position_country_id'));
+        // } else {
+        //     $whereLocation = getInRadiusWhere($distance);
+        // }
+
+        $geoCityInfo = IP::geoInfoCity();
+        $gUserCountryId = $geoCityInfo['country_id'];
+        $gUserCityId = $geoCityInfo['city_id'];
+
+
+        if ($distance == 0) {//In the whole city
+            $whereLocation = " AND u.geo_position_city_id = " . to_sql($gUserCityId);
         } elseif (Common::getOption('max_filter_distance') == 'max_search_country' && $distance > $maxDistance) {//In the whole country
-            $whereLocation = " AND u.geo_position_country_id = " . to_sql(guser('geo_position_country_id'));
+            $whereLocation = " AND u.geo_position_country_id = " . to_sql($gUserCountryId);
         } else {
             $whereLocation = getInRadiusWhere($distance);
         }
+
     } else {
-        if($distance > $maxDistance && $user['city']>0) {
+        if ($distance > $maxDistance && $user['city'] > 0) {
             $user['city'] = 0;
             $user['state'] = 0;
         }
 
-        $allCountriesSearch = get_param('all_countries',0);
+        $allCountriesSearch = get_param('all_countries', 0);
 
-        if($allCountriesSearch==1){
+        if ($allCountriesSearch == 1) {
             $user['city'] = 0;
             $user['state'] = 0;
             $user['country'] = 0;
@@ -579,8 +607,7 @@ if(User::isSuperPowers()) {
 
         // search only by distance from selected city
         $whereLocation = '';
-        if($distance && $user['city'])
-        {
+        if ($distance && $user['city']) {
             // find MAX geo values
             $whereLocation = inradius($user['city'], $distance);
             $from_add .= " LEFT JOIN geo_city AS gc ON gc.city_id = u.city_id";
@@ -588,59 +615,58 @@ if(User::isSuperPowers()) {
             $whereLocation = Common::getWhereSearchLocation($user);
         }
     }
-}
-else{
+
+} else {
 
     $geoCityInfo = IP::geoInfoCity();
     $gUserCountryId = $geoCityInfo['country_id'];
     $gUserCityId = $geoCityInfo['city_id'];
-    
-    if($distance == 0){//In the whole city
+
+    if ($distance == 0) {//In the whole city
         $whereLocation = " AND u.geo_position_city_id = " . to_sql($gUserCityId);
     } elseif (Common::getOption('max_filter_distance') == 'max_search_country' && $distance > $maxDistance) {//In the whole country
         $whereLocation = " AND u.geo_position_country_id = " . to_sql($gUserCountryId);
     } else {
         $whereLocation = getInRadiusWhere($distance);
     }
-    
 }
 
 $onlyPhotos = Common::isOptionActive('no_profiles_without_photos_search');
 if ($onlyPhotos && !$withPhoto) {
     $onlyPhotos = false;
 }
-if (get_param("photo", "") == "1" || $onlyPhotos){
-	$where .= " AND u.is_photo='Y'";
+if (get_param("photo", "") == "1" || $onlyPhotos) {
+    $where .= " AND u.is_photo='Y'";
 }
 
 if (get_param("couple", "") == "1") {
-	$where .= " AND u.couple='Y'";
+    $where .= " AND u.couple='Y'";
 }
 
 $status = get_param('status');
 if ($status == "online") {
-	$where .= " AND last_visit>'" . (date("Y-m-d H:i:s", time() - $g['options']['online_time'] * 60)) . "'";
-} elseif ($status == "new"){
-	$where .= " AND register>" . to_sql(date('Y-m-d H:00:00', (time() - $g['options']['new_time'] * 3600 * 24)), 'Text') . "";
+    $where .= " AND last_visit>'" . (date("Y-m-d H:i:s", time() - $g['options']['online_time'] * 60)) . "'";
+} elseif ($status == "new") {
+    $where .= " AND register>" . to_sql(date('Y-m-d H:00:00', (time() - $g['options']['new_time'] * 3600 * 24)), 'Text') . "";
 } elseif ($status == "birthday") {
-	$where .= " AND (DAYOFMONTH(birth)=DAYOFMONTH('" . date('Y-m-d H:i:s') . "') AND MONTH(birth)=MONTH('" . date('Y-m-d H:i:s') . "'))";
+    $where .= " AND (DAYOFMONTH(birth)=DAYOFMONTH('" . date('Y-m-d H:i:s') . "') AND MONTH(birth)=MONTH('" . date('Y-m-d H:i:s') . "'))";
 }
 
 $keyword = get_param("keyword", "");
 if ($keyword != "") {
-	$keyword_search_sql = "";
-	$keyword = to_sql(strip_tags($keyword), "Plain");
-	foreach ($g['user_var'] as $k => $v) {
+    $keyword_search_sql = "";
+    $keyword = to_sql(strip_tags($keyword), "Plain");
+    foreach ($g['user_var'] as $k => $v) {
         if ($v['type'] == "text" || $v['type'] == "textarea") $keyword_search_sql .= " OR i." . $k . " LIKE '%" . $keyword . "%'";
     }
-	$where .= " AND (u.name LIKE '%" . $keyword . "%'" . $keyword_search_sql . ") ";
+    $where .= " AND (u.name LIKE '%" . $keyword . "%'" . $keyword_search_sql . ") ";
 }
 
 //$ht = get_param("name", "") == "" ? "hide_time=0" : "1 ";
 $ht = User::isHiddenSql();
 
 $wallItemId = get_param('wall_item_id', '');
-if($wallItemId) {
+if ($wallItemId) {
     $where .= ' AND wl.wall_item_id = ' . to_sql($wallItemId, 'Number');
     $from_add = ' LEFT JOIN wall_likes AS wl ON wl.user_id = u.user_id ';
     // show hidden profiles in likes
@@ -650,9 +676,9 @@ if($wallItemId) {
 $whereCore .= ' AND ' . $ht;
 
 $uidsExclude = get_param('uids_exclude', '');
-if($uidsExclude) {
+if ($uidsExclude) {
     if (is_array($uidsExclude)) {
-        $uidsExclude = implode(',',$uidsExclude);
+        $uidsExclude = implode(',', $uidsExclude);
     }
     $where .= ' AND u.user_id NOT IN (' . to_sql($uidsExclude, 'Plain') . ') ';
 }
@@ -660,7 +686,7 @@ if($uidsExclude) {
 if (get_param('uid') != '') {
     $where = "u.user_id=" . intval(get_param('uid')) . "";
 } else {
-	$where = $ht . " " . $where . " ";
+    $where = $ht . " " . $where . " ";
 }
 
 if (Common::getOption('do_not_show_me_in_search', 'template_options')
@@ -673,8 +699,8 @@ $uidEnc = get_param('uid');
 /*if ($display == 'encounters' && !$uidEnc) {
     $order = 'enc1.user_from ASC, ';
 }*/
-$user['i_am_here_to'] = (int) get_param('i_am_here_to', '');
-if($user['i_am_here_to']) {
+$user['i_am_here_to'] = (int)get_param('i_am_here_to', '');
+if ($user['i_am_here_to']) {
     Common::prepareSearchWhereOrderByIAmHereTo($where, $order, $user['i_am_here_to']);
 }
 
@@ -683,90 +709,90 @@ if ($isUrban) {
     $list->m_on_page = get_param('on_page', $onPage);
     if ($display != 'encounters' && $display != 'rate_people') {
         $list->m_offset = get_param('offset', (int)get_cookie('back_offset', 1));
-        $list->m_chk=$onPage;
+        $list->m_chk = $onPage;
     }
 
     $customOrder = ($isFreeSite) ? $orderNear . ' user_id DESC' : 'date_search DESC, ' . $orderNear . ' user_id DESC';
 
     if ($g_user['user_id']) {
-            $guidSql = to_sql($g_user['user_id'], 'Number');
+        $guidSql = to_sql($g_user['user_id'], 'Number');
 
-			$from_add .= " LEFT JOIN user_block_list AS ubl1 ON (ubl1.user_to = u.user_id AND ubl1.user_from = " . $guidSql . ")
+        $from_add .= " LEFT JOIN user_block_list AS ubl1 ON (ubl1.user_to = u.user_id AND ubl1.user_from = " . $guidSql . ")
 					LEFT JOIN user_block_list AS ubl2 ON (ubl2.user_from = u.user_id AND ubl2.user_to = " . $guidSql . ")";
-			$where .= ' AND ubl1.id IS NULL AND ubl2.id IS NULL';
-            $whereCore .= ' AND ubl1.id IS NULL AND ubl2.id IS NULL';
-            if ($display == 'encounters') {
-                $where .=" AND u.is_photo_public = 'Y'
+        $where .= ' AND ubl1.id IS NULL AND ubl2.id IS NULL';
+        $whereCore .= ' AND ubl1.id IS NULL AND ubl2.id IS NULL';
+        if ($display == 'encounters') {
+            $where .= " AND u.is_photo_public = 'Y'
                            AND u.user_id != " . $guidSql;
-                $whereEnc = '';
-                if (!$uidEnc) {
-                    $uidEncLike = get_param('uid_enc_like', 0);
-                    /*$whereEnc =' AND u.user_id NOT IN (' . $uidEncLike . ') AND (enc.id IS NULL OR (enc1.id IS NOT NULL AND enc.id IS NOT NULL))';
-                    $from_add .= " LEFT JOIN encounters AS enc ON (u.user_id = enc.user_to AND enc.user_from = " . $guidSql . ")
-                                                               OR (u.user_id = enc.user_from AND enc.user_to = " . $guidSql . "
-                                                              AND ((enc.from_reply != 'N' AND enc.to_reply != 'P')OR(enc.from_reply = 'N')))
+            $whereEnc = '';
+            if (!$uidEnc) {
+                $uidEncLike = get_param('uid_enc_like', 0);
+                /*$whereEnc =' AND u.user_id NOT IN (' . $uidEncLike . ') AND (enc.id IS NULL OR (enc1.id IS NOT NULL AND enc.id IS NOT NULL))';
+                $from_add .= " LEFT JOIN encounters AS enc ON (u.user_id = enc.user_to AND enc.user_from = " . $guidSql . ")
+                                                           OR (u.user_id = enc.user_from AND enc.user_to = " . $guidSql . "
+                                                          AND ((enc.from_reply != 'N' AND enc.to_reply != 'P')OR(enc.from_reply = 'N')))
 
-                                   LEFT JOIN encounters AS enc1 ON ((u.user_id = enc1.user_to AND enc1.user_from = " . $guidSql . ")
-                                                                 OR (u.user_id = enc1.user_from AND enc1.user_to = " . $guidSql . "))
-                                                                AND (enc1.from_reply IN ('Y', 'M') AND enc1.to_reply IN ('Y', 'M'))";*/
+                               LEFT JOIN encounters AS enc1 ON ((u.user_id = enc1.user_to AND enc1.user_from = " . $guidSql . ")
+                                                             OR (u.user_id = enc1.user_from AND enc1.user_to = " . $guidSql . "))
+                                                            AND (enc1.from_reply IN ('Y', 'M') AND enc1.to_reply IN ('Y', 'M'))";*/
 
 
-                    $where .=' AND enc.user_from IS NULL AND enc1.user_from IS NULL ';
-                    $from_add .= " LEFT JOIN encounters AS enc ON (u.user_id = enc.user_to AND enc.user_from = " . $guidSql . ")
+                $where .= ' AND enc.user_from IS NULL AND enc1.user_from IS NULL ';
+                $from_add .= " LEFT JOIN encounters AS enc ON (u.user_id = enc.user_to AND enc.user_from = " . $guidSql . ")
                                LEFT JOIN encounters AS enc1 ON (u.user_id = enc1.user_from AND enc1.user_to = " . $guidSql . "
                                                        AND ((enc1.from_reply != 'N' AND enc1.to_reply != 'P') OR (enc1.from_reply = 'N')))";
 
-                }
+            }
 
-                if ($isFreeSite) {
-                    $customOrder = $orderNear . ' user_id DESC';
-                } else {
-                    $orderDate = $optionTmplName == 'impact_mobile' ? 'date_search' : 'date_encounters';
-                    $customOrder = $orderDate . ' DESC, ' . $orderNear . ' user_id DESC';
-                }
+            if ($isFreeSite) {
+                $customOrder = $orderNear . ' user_id DESC';
+            } else {
+                $orderDate = $optionTmplName == 'impact_mobile' ? 'date_search' : 'date_encounters';
+                $customOrder = $orderDate . ' DESC, ' . $orderNear . ' user_id DESC';
+            }
 
 
-                /*if (!$isFreeSite) {
-                    $customOrder = 'date_encounters DESC, near DESC,  user_id DESC';
-                }*/
+            /*if (!$isFreeSite) {
+                $customOrder = 'date_encounters DESC, near DESC,  user_id DESC';
+            }*/
 
-                $list->m_on_page = 1;
-                $mOnPageEncounters = Common::getOption('usersinfo_encounters_list', 'template_options');
+            $list->m_on_page = 1;
+            $mOnPageEncounters = Common::getOption('usersinfo_encounters_list', 'template_options');
+            if ($mOnPageEncounters) {
+                $list->m_on_page = $mOnPageEncounters;
+            }
+            if (!$paramUid && Users_List::isBigBase()) {
+                $countForResults = 1;
                 if ($mOnPageEncounters) {
-                    $list->m_on_page = $mOnPageEncounters;
+                    $countForResults = $mOnPageEncounters;
                 }
-                if(!$paramUid && Users_List::isBigBase()) {
-                    $countForResults = 1;
-                    if ($mOnPageEncounters) {
-                        $countForResults = $mOnPageEncounters;
-                    }
-                    Encounters::prepareFastSelect($where, $whereLocation, $from_add, $customOrder, $countForResults);
-                    $where = Encounters::getFastSelectWhere($where, $countForResults);
+                Encounters::prepareFastSelect($where, $whereLocation, $from_add, $customOrder, $countForResults);
+                $where = Encounters::getFastSelectWhere($where, $countForResults);
+                $addWhereLocation = false;
+                $order = '';
+                $customOrder = '';
+            }
+        } elseif ($display == 'rate_people') {
+
+            $where .= " AND u.is_photo_public = 'Y'
+                           AND u.user_id != " . $guidSql .
+                ' AND upr.photo_id IS NULL ';
+            $from_add .= ' LEFT JOIN photo AS up ON u.user_id = up.user_id AND up.private = "N" AND up.visible = "Y"
+                               LEFT JOIN photo_rate AS upr ON up.photo_id = upr.photo_id AND upr.user_id = ' . $guidSql;
+            $customOrder = 'votes ASC, RAND()';
+            $from_group = 'u.user_id';
+            $list->m_on_page = 1;
+            $list->fieldsFromAdd = ', up.photo_id as photo_rate_id, (SELECT SUM(votes) FROM photo WHERE user_id=u.user_id) AS votes';
+
+            if (!$paramUid) {
+                if (Users_List::isBigBase()) {
+                    $where = User::getRatePhotoWhereOnBigBase($where, $from_add, $user, $whereLocation, $order . $customOrder);
                     $addWhereLocation = false;
                     $order = '';
                     $customOrder = '';
                 }
-            }elseif ($display == 'rate_people') {
-
-                $where .=" AND u.is_photo_public = 'Y'
-                           AND u.user_id != " . $guidSql .
-                         ' AND upr.photo_id IS NULL ';
-                $from_add .= ' LEFT JOIN photo AS up ON u.user_id = up.user_id AND up.private = "N" AND up.visible = "Y"
-                               LEFT JOIN photo_rate AS upr ON up.photo_id = upr.photo_id AND upr.user_id = ' . $guidSql;
-                $customOrder = 'votes ASC, RAND()';
-                $from_group = 'u.user_id';
-                $list->m_on_page = 1;
-                $list->fieldsFromAdd = ', up.photo_id as photo_rate_id, (SELECT SUM(votes) FROM photo WHERE user_id=u.user_id) AS votes';
-
-                if(!$paramUid){
-                    if(Users_List::isBigBase()){
-                        $where = User::getRatePhotoWhereOnBigBase($where, $from_add, $user, $whereLocation, $order . $customOrder);
-                        $addWhereLocation = false;
-                        $order = '';
-                        $customOrder = '';
-                    }
-                }
             }
+        }
     }
     $order .= $customOrder;
 } else {
@@ -774,15 +800,15 @@ if ($isUrban) {
     $order .= $orderNear . ' user_id DESC';
 }
 
-if($isUrban && $display == 'encounters') {
-    if(Encounters::$fastSelectUid) {
+if ($isUrban && $display == 'encounters') {
+    if (Encounters::$fastSelectUid) {
         $total = 1;
     } else {
         $total = DB::result('SELECT COUNT(u.user_id) FROM user AS u ' . $from_add . ' WHERE ' . $where . $whereEnc);
     }
     if (!$total) {
         if (!$uidEnc) {
-            $whereEnc =' AND (enc.id IS NULL OR (enc1.id IS NOT NULL AND enc.id IS NOT NULL))';
+            $whereEnc = ' AND (enc.id IS NULL OR (enc1.id IS NOT NULL AND enc.id IS NOT NULL))';
         }
         $list->m_reset_sql = 1;
     }
@@ -797,8 +823,8 @@ if ($addWhereLocation) {
 }
 
 $global_username_search = get_param('global_search_by_username');
-if(trim($global_username_search) != ''){
-    $where = $whereCore . ' AND u.name LIKE "%'.to_sql($global_username_search,'Plain').'%"';
+if (trim($global_username_search) != '') {
+    $where = $whereCore . ' AND u.name LIKE "%' . to_sql($global_username_search, 'Plain') . '%"';
 }
 
 $list->m_sql_from_add = $from_add;
@@ -807,7 +833,7 @@ $list->m_sql_order = $order;
 
 $list->m_last_visit_only_online = true;
 $list->row_breaks = true;
-$list->m_offset_real=$isUrban;
+$list->m_offset_real = $isUrban;
 
 //$list->m_debug = "Y";
 $page->add($list);

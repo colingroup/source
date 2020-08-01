@@ -353,7 +353,10 @@ class UsersFilter extends UserFields {
         }
 
         if ($peopleNearby) {
-            $dataLokingFor['city'] = l(guser('geo_position_city'));
+            $geoCityInfo = IP::geoInfoCity();
+            $dataLokingFor['city']=$geoCityInfo['3'];
+            $dataLokingFor['country']=$geoCityInfo['3'];
+            // $dataLokingFor['city'] = l(guser('geo_position_city'));
             $dataLokingFor['all_items_select'] = 0;
         } else {
             $dataLokingFor['city'] = $location['city_title'];
@@ -364,7 +367,7 @@ class UsersFilter extends UserFields {
                 $dataLokingFor['all_items_select']=0;
             }
         }
-
+        
         $html->setvar('offset', get_param('offset', 1));
         $html->setvar('max_filter_distance_country', $isMaxFilterDistanceCountry);
         $html->setvar('radius_max', $maxSearchDistance + 1);
@@ -425,6 +428,15 @@ class UsersFilter extends UserFields {
                 }
             }
 
+            // here1
+            $isAjaxRequest = get_param('ajax');
+            if(!$isAjaxRequest){
+            // if(!User::isSuperPowers()) {
+                $geoCityInfo = IP::geoInfoCity();
+                $dataLokingFor['city']=$geoCityInfo['3'];
+                $dataLokingFor['country']=$geoCityInfo['3'];
+            }
+            
             $html->setvar('filter_looking_for', User::getLookingFor($uid, $dataLokingFor, 'search'));
         }
 
@@ -452,6 +464,9 @@ class UsersFilter extends UserFields {
         if ($peopleNearby) {
             $dataLocation['city_title'] = l('filter_people_nearby');
         }
+        // here1
+        $geoCityInfo = IP::geoInfoCity();
+        $dataLocation['city_title'] = $geoCityInfo['3'];
         htmlSetVars($html, $dataLocation);
 
         // find appearance position start

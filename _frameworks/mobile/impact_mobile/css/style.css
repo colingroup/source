@@ -3365,3 +3365,11 @@ width:100% !important;
 #btn_send_like i{
     font-size: 27px !important;
 }
+
+/*TODO conda profile num*/
+#link-albums .profile-photo-num{
+    position: absolute;
+    top: 1px;
+    color: red;
+    font-weight: bold;
+}
