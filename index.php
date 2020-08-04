@@ -13,6 +13,7 @@ if (!file_exists(dirname(__FILE__) . '/_include/config/db.php')) {
     header($redirect);
 }
 
+
 include("./_include/core/main_start.php");
 //include("./_include/current/blogs/tools.php");
 if (get_param('cmd', '') == 'logout') {
@@ -25,6 +26,8 @@ if (guid() > 0 and !isset($gc)) {
 
 // Fix for IIS default main page
 $p = 'index.php';
+
+
 
 Common::mainPageRedirect();
 
@@ -476,7 +479,7 @@ class CIndex extends CHeader
         }
 
 		$cityInfo = IP::geoInfoCity();
-$html->setvar('ip_city_id', $cityInfo['country_id']);
+                $html->setvar('ip_city_id', $cityInfo['country_id']);
                 $html->setvar('ip_city_title', l(Common::getLocationTitle('country',$cityInfo['country_id'])));
                 $html->setvar('type_location', 'country');
                 $params='&state=0&city=0&set_filter=1';            $html->setvar('params', $params);

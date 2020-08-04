@@ -629,7 +629,7 @@ if (User::isSuperPowers()) {
         $whereLocation = " AND u.geo_position_country_id = " . to_sql($gUserCountryId);
     } else {
         $whereLocation = getInRadiusWhere($distance);
-    }
+//    }
 }
 
 $onlyPhotos = Common::isOptionActive('no_profiles_without_photos_search');

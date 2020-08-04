@@ -89,7 +89,8 @@
                 <script>clProfile.prepareProfileName();</script>
                 <div class="bl_list_info">
                     <ul class="list_info">
-                        <li id="profile_city">{city_title}</li>
+                        <!--TODO conda-->
+                        <li id="profile_city">{city_title} • {country} </li>
                     </ul>
                     <!-- begin_profile_main_edit -->
                     <div class="title_icon_edit_bl" onclick="clProfile.handlerLinkSetTabs($(this),'pp_profile_edit_main',false,false,'#tabs-5');" data-type-loader="fade_btn" data-cl-loader="loader_pen_small">
@@ -140,7 +141,7 @@
                 <div class="bl">
                     <a id="link-albums" onclick="clProfile.goToAlbums(); return false;" href="#albums-public" class="icon link_tabs">
                         <!--TODO conda-->
-                        <i class="fa fa-camera" aria-hidden="true"><span class="profile-photo-num">1</span></i>
+                        <i class="fa fa-camera" aria-hidden="true"><span class="profile-photo-num">{count}</span></i>
                     </a>
                     <i class="fa fa-caret-down" aria-hidden="true"></i>
 

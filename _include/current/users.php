@@ -1317,9 +1317,10 @@ class CUsersProfile extends CUsers {
 
     function onItemImpact(&$html, $row, $i, $last) {
         global $g;
-
+        // TODO conda
         $html->setvar('user_name', $row['name']);
-
+//        print_r($row);
+//        die();
         $isSuperPowers = Common::isOptionActive('free_site') || User::isSuperPowers();
         $isMyProfile = $row['user_id'] == self::$guid;
         User::getLookingForImpact($html, $row['user_id']);
