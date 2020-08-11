@@ -590,17 +590,17 @@ if(User::isSuperPowers()) {
 
 else{
 
-//    $geoCityInfo = IP::geoInfoCity();
-//    $gUserCountryId = $geoCityInfo['country_id'];
-//    $gUserCityId = $geoCityInfo['city_id'];
-//
-//    if($distance == 0){//In the whole city
-//        $whereLocation = " AND u.geo_position_city_id = " . to_sql($gUserCityId);
-//    } elseif (Common::getOption('max_filter_distance') == 'max_search_country' && $distance > $maxDistance) {//In the whole country
-//        $whereLocation = " AND u.geo_position_country_id = " . to_sql($gUserCountryId);
-//    } else {
-//        $whereLocation = getInRadiusWhere($distance);
-//    }
+    $geoCityInfo = IP::geoInfoCity();
+    $gUserCountryId = $geoCityInfo['country_id'];
+    $gUserCityId = $geoCityInfo['city_id'];
+
+    if($distance == 0){//In the whole city
+        $whereLocation = " AND u.geo_position_city_id = " . to_sql($gUserCityId);
+    } elseif (Common::getOption('max_filter_distance') == 'max_search_country' && $distance > $maxDistance) {//In the whole country
+        $whereLocation = " AND u.geo_position_country_id = " . to_sql($gUserCountryId);
+    } else {
+        $whereLocation = getInRadiusWhere($distance);
+    }
 
 }
 $from_add .= " LEFT JOIN userinfo AS i ON u.user_id=i.user_id ";

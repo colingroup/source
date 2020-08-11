@@ -278,7 +278,9 @@ var CSearchResults = function() {
     }
 
     this.toProfileUser = function(link){
+
         $this.pageBeforeUnload();
+
         $(link).css({opacity:'.6', transition:'opacity .4s'})
                .closest('.users_list_item').append(getLoader('loader_user_search hidden',false,true).delay(1).removeClass('hidden',0));
         setErrorLoadPage(function(){

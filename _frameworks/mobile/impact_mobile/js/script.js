@@ -753,6 +753,7 @@ function goToPage(link, url){
     }else{
         getPage($link,url,false,layerLoader);
     }
+    console.log("here");
     return false;
 }
 

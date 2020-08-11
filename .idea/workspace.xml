@@ -3,27 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="18f3124d-61c5-490a-9d87-e735daedac0c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_files/cache/administration_g_cache_users_edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/_files/cache/administration_g_cache_users_edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_files/cache/administration_g_cache_users_results.php" beforeDir="false" afterPath="$PROJECT_DIR$/_files/cache/administration_g_cache_users_results.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_files/cache/main_g_cache_css.php" beforeDir="false" afterPath="$PROJECT_DIR$/_files/cache/main_g_cache_css.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_files/cache/main_g_cache_js.php" beforeDir="false" afterPath="$PROJECT_DIR$/_files/cache/main_g_cache_js.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_files/cache/main_g_cache_messages.php" beforeDir="false" afterPath="$PROJECT_DIR$/_files/cache/main_g_cache_messages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_files/cache/main_g_cache_moderator.php" beforeDir="false" afterPath="$PROJECT_DIR$/_files/cache/main_g_cache_moderator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_files/cache/main_g_cache_mutual_attractions.php" beforeDir="false" afterPath="$PROJECT_DIR$/_files/cache/main_g_cache_mutual_attractions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_files/cache/main_g_cache_profile_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/_files/cache/main_g_cache_profile_view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_files/cache/main_g_cache_search_results.php" beforeDir="false" afterPath="$PROJECT_DIR$/_files/cache/main_g_cache_search_results.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_files/cache/main_g_cache_upgrade.php" beforeDir="false" afterPath="$PROJECT_DIR$/_files/cache/main_g_cache_upgrade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_files/cache/main_g_cache_users_viewed_me.php" beforeDir="false" afterPath="$PROJECT_DIR$/_files/cache/main_g_cache_users_viewed_me.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_files/cache/mobile_g_cache_js.php" beforeDir="false" afterPath="$PROJECT_DIR$/_files/cache/mobile_g_cache_js.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_files/cache/mobile_g_cache_moderator.php" beforeDir="false" afterPath="$PROJECT_DIR$/_files/cache/mobile_g_cache_moderator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_files/cache/mobile_g_cache_profile_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/_files/cache/mobile_g_cache_profile_view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_files/cache/mobile_g_cache_search_results.php" beforeDir="false" afterPath="$PROJECT_DIR$/_files/cache/mobile_g_cache_search_results.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_files/cache/users_totaland_2__1_ltlt_castorientation_as_signed_-_1" beforeDir="false" afterPath="$PROJECT_DIR$/_files/cache/users_totaland_2__1_ltlt_castorientation_as_signed_-_1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_frameworks/main/impact/js/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/_frameworks/main/impact/js/profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_header.html" beforeDir="false" afterPath="$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_encounters_items.html" beforeDir="false" afterPath="$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_encounters_items.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_include/current/users.php" beforeDir="false" afterPath="$PROJECT_DIR$/_include/current/users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_frameworks/mobile/impact_mobile/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/_frameworks/mobile/impact_mobile/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_frameworks/mobile/impact_mobile/js/search_results.js" beforeDir="false" afterPath="$PROJECT_DIR$/_frameworks/mobile/impact_mobile/js/search_results.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/m/search_results.php" beforeDir="false" afterPath="$PROJECT_DIR$/m/search_results.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/search_results.php" beforeDir="false" afterPath="$PROJECT_DIR$/search_results.php" afterDir="false" />
     </list>
@@ -51,34 +40,39 @@
     <session id="441431732">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="12" />
           <entry key="project.open.time.16" value="2" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.24" value="2" />
           <entry key="project.open.time.25" value="1" />
-          <entry key="project.open.time.26" value="3" />
-          <entry key="project.open.time.27" value="1" />
+          <entry key="project.open.time.26" value="4" />
+          <entry key="project.open.time.27" value="2" />
           <entry key="project.open.time.28" value="2" />
+          <entry key="project.open.time.30" value="1" />
           <entry key="project.open.time.34" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="13" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="2" />
           <entry key="htaccess" value="3" />
-          <entry key="html" value="14" />
-          <entry key="js" value="7" />
-          <entry key="php" value="43" />
+          <entry key="html" value="23" />
+          <entry key="html_src" value="1" />
+          <entry key="js" value="10" />
+          <entry key="php" value="52" />
           <entry key="sql" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="2" />
-          <entry key="HTML" value="14" />
-          <entry key="JavaScript" value="7" />
-          <entry key="PHP" value="43" />
+          <entry key="HTML" value="23" />
+          <entry key="JavaScript" value="10" />
+          <entry key="PHP" value="52" />
+          <entry key="PLAIN_TEXT" value="1" />
           <entry key="SQL" value="1" />
           <entry key="htaccess" value="3" />
         </counts>
@@ -86,16 +80,16 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="72" />
-          <entry key="html" value="382" />
-          <entry key="js" value="178" />
+          <entry key="html" value="449" />
+          <entry key="js" value="222" />
           <entry key="php" value="657" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="72" />
-          <entry key="HTML" value="382" />
-          <entry key="JavaScript" value="178" />
+          <entry key="HTML" value="449" />
+          <entry key="JavaScript" value="222" />
           <entry key="PHP" value="657" />
         </counts>
       </usages-collector>
@@ -104,10 +98,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_include/current/usersfilter.class.php">
+        <entry file="file://$PROJECT_DIR$/_include/current/user.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="465" column="32" selection-start-line="465" selection-start-column="32" selection-end-line="465" selection-end-column="32" />
+            <state relative-caret-position="371">
+              <caret line="4295" column="24" lean-forward="true" selection-start-line="4295" selection-start-column="24" selection-end-line="4295" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_frameworks/main/impact/_profile.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="199">
+              <caret line="168" column="32" selection-start-line="168" selection-start-column="32" selection-end-line="168" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_profile.html_src">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="226">
+              <caret line="126" column="25" selection-start-line="126" selection-start-column="25" selection-end-line="126" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -115,8 +127,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_profile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="90" column="42" lean-forward="true" selection-start-line="90" selection-start-column="42" selection-end-line="90" selection-end-column="42" />
+            <state relative-caret-position="98">
+              <caret line="403" column="17" lean-forward="true" selection-start-line="403" selection-start-column="17" selection-end-line="403" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -124,17 +136,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/m/search_results.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="566">
-              <caret line="631" selection-start-line="620" selection-end-line="631" />
+            <state relative-caret-position="261">
+              <caret line="604" column="31" lean-forward="true" selection-start-line="604" selection-start-column="31" selection-end-line="604" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/social_login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_include/current/social.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1629">
+              <caret line="281" column="38" selection-start-line="281" selection-start-column="24" selection-end-line="281" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_include/current/vk.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/search_results.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="603" lean-forward="true" selection-start-line="603" selection-end-line="603" />
+            <state relative-caret-position="6536">
+              <caret line="584" column="16" selection-start-line="584" selection-start-column="16" selection-end-line="584" selection-end-column="16" />
               <folding>
                 <element signature="e#2379#6625#0#PHP" />
                 <element signature="e#6626#12364#0#PHP" />
@@ -144,55 +183,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_header.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="386" column="35" lean-forward="true" selection-start-line="386" selection-start-column="35" selection-end-line="386" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_include/current/cprofileeditmain.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2603">
-              <caret line="137" column="43" selection-start-line="137" selection-start-column="43" selection-end-line="137" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/administration/users_edit.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4807">
-              <caret line="259" column="23" selection-start-line="259" selection-start-column="23" selection-end-line="259" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_include/current/cim.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56772">
-              <caret line="2988" column="15" selection-start-line="2988" selection-start-column="15" selection-end-line="2988" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_include/current/users.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="1333" column="19" selection-start-line="1333" selection-start-column="19" selection-end-line="1333" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_frameworks/main/impact/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5415">
-              <caret line="285" selection-start-line="285" selection-end-line="285" />
+            <state relative-caret-position="4788">
+              <caret line="252" column="37" selection-start-line="252" selection-start-column="37" selection-end-line="252" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -201,36 +195,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>update</find>
-      <find>TODO conda</find>
-      <find>['people_nearby']['va</find>
-      <find>$userSearchFiltersOrdered</find>
-      <find>$userSearchFiltersMobile</find>
-      <find>updateParamsFilter</find>
-      <find>index.php</find>
-      <find>// here1</find>
-      <find>// here</find>
-      <find>d</find>
-      <find>&lt;span class=&quot;profile-photo-num&quot;&gt;1&lt;/span&gt;</find>
-      <find>clProfile.prepareProfileName();</find>
-      <find>user_name</find>
-      <find>setvar('user_name</find>
-      <find>35.png</find>
-      <find>99043_1012955_m.jpg</find>
-      <find>1012995</find>
       <find>.jpg</find>
       <find>url_photo_public</find>
       <find>photo_item_</find>
       <find>_profile.html</find>
       <find>photo_public_id</find>
       <find>photo_add_public</find>
-      <find>conda</find>
       <find>photo.cou</find>
       <find>count_public</find>
       <find>&lt;li class=&quot;icon_like&quot;&gt;</find>
       <find>TOD</find>
       <find>bl_list_info</find>
       <find>\n    \$geoCityInfo \= IP\:\:geoInfoCity\(\)\;\n    \$gUserCountryId \= \$geoCityInfo\[\'country_id\'\]\;\n    \$gUserCityId \= \$geoCityInfo\[\'city_id\'\]\;\n\n    if \(\$distance \=\= 0\) \{\/\/In the whole city\n        \$whereLocation \= \&quot; AND u\.geo_position_city_id \= \&quot; \. to_sql\(\$gUserCityId\)\;\n    \} elseif \(Common\:\:getOption\(\'max_filter_distance\'\) \=\= \'max_search_country\' \&amp;\&amp; \$distance \&gt; \$maxDistance\) \{\/\/In the whole country\n        \$whereLocation \= \&quot; AND u\.geo_position_country_id \= \&quot; \. to_sql\(\$gUserCountryId\)\;\n    \} else \{\n        \$whereLocation \= getInRadiusWhere\(\$distance\)\;\n</find>
+      <find>bl_info_photo_top user_info encounters_user_info</find>
+      <find>todo</find>
+      <find>todo conda</find>
+      <find>server error</find>
+      <find>clSearch.toProfileUser(this)</find>
+      <find>users_list_item</find>
+      <find>serverError</find>
+      <find>updatese</find>
+      <find>UpdateServer()</find>
+      <find>uploadpageerror</find>
+      <find>server</find>
+      <find>servererror</find>
+      <find>uploadPageError</find>
+      <find>chame</find>
+      <find>fa fa-star</find>
+      <find>id=&quot;btn_send_like</find>
+      <find>link-albums</find>
+      <find>conda</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -240,8 +234,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/audiochat.php" />
-        <option value="$PROJECT_DIR$/_frameworks/mobile/impact_mobile/js/script.js" />
-        <option value="$PROJECT_DIR$/_frameworks/mobile/impact_mobile/js/search_results.js" />
         <option value="$PROJECT_DIR$/_frameworks/mobile/impact_mobile/search_results.html" />
         <option value="$PROJECT_DIR$/user_block_list.php" />
         <option value="$PROJECT_DIR$/profile.php" />
@@ -265,9 +257,12 @@
         <option value="$PROJECT_DIR$/_include/current/cim.class.php" />
         <option value="$PROJECT_DIR$/_include/current/users.php" />
         <option value="$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_header.html" />
-        <option value="$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_profile.html" />
         <option value="$PROJECT_DIR$/m/search_results.php" />
+        <option value="$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_encounters_items.html" />
         <option value="$PROJECT_DIR$/search_results.php" />
+        <option value="$PROJECT_DIR$/_frameworks/mobile/impact_mobile/js/search_results.js" />
+        <option value="$PROJECT_DIR$/_frameworks/mobile/impact_mobile/js/script.js" />
+        <option value="$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_profile.html" />
       </list>
     </option>
   </component>
@@ -310,7 +305,13 @@
             <path>
               <item name="source" type="b2602c69:ProjectViewProjectNode" />
               <item name="source" type="462c0819:PsiDirectoryNode" />
-              <item name="m" type="462c0819:PsiDirectoryNode" />
+              <item name="_include" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="source" type="b2602c69:ProjectViewProjectNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="_include" type="462c0819:PsiDirectoryNode" />
+              <item name="current" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -360,18 +361,23 @@
       <workItem from="1596479488448" duration="1204000" />
       <workItem from="1596504902609" duration="961000" />
       <workItem from="1596505908828" duration="5582000" />
-      <workItem from="1596542417183" duration="3272000" />
+      <workItem from="1596542417183" duration="8548000" />
+      <workItem from="1596596557471" duration="2226000" />
+      <workItem from="1596644163511" duration="5808000" />
+      <workItem from="1596650665686" duration="2846000" />
+      <workItem from="1596700278201" duration="117000" />
+      <workItem from="1596781289089" duration="5249000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66559000" />
+    <option name="totallyTimeSpent" value="88081000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10805369" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19530201" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -399,74 +405,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/audiochat.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2546">
-          <caret line="140" column="16" selection-start-line="140" selection-start-column="16" selection-end-line="140" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_include/current/templateedge.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_list_users_info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="20" selection-start-column="9" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_include/core/x.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="828" column="18" lean-forward="true" selection-start-line="828" selection-start-column="18" selection-end-line="828" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/m/wall_ajax.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="21" column="31" lean-forward="true" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_frameworks/mobile/impact_mobile/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-915" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_frameworks/mobile/impact_mobile/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="70" column="38" lean-forward="true" selection-start-line="70" selection-start-column="38" selection-end-line="70" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/games.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="192" column="31" selection-start-line="192" selection-start-column="31" selection-end-line="192" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_friends.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="337" column="21" lean-forward="true" selection-start-line="336" selection-start-column="86" selection-end-line="337" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/profile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="19" column="36" lean-forward="true" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user_block_list.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
@@ -478,13 +416,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
           <caret line="92" column="23" lean-forward="true" selection-start-line="92" selection-start-column="23" selection-end-line="92" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/m/profile_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="67" column="60" lean-forward="true" selection-start-line="67" selection-start-column="60" selection-end-line="67" selection-end-column="60" />
         </state>
       </provider>
     </entry>
@@ -527,13 +458,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
           <caret line="44" column="12" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_frameworks/mobile/impact_mobile/search_results.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -593,13 +517,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_frameworks/mobile/impact_mobile/js/search_results.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="444" column="40" lean-forward="true" selection-start-line="444" selection-start-column="40" selection-end-line="444" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9804">
@@ -611,13 +528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
           <caret line="4" column="24" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_include/current/user.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70281">
-          <caret line="3705" column="20" selection-start-line="3705" selection-start-column="20" selection-end-line="3705" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -663,41 +573,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/administration/users_edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4807">
-          <caret line="259" column="23" selection-start-line="259" selection-start-column="23" selection-end-line="259" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_include/current/cim.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56772">
-          <caret line="2988" column="15" selection-start-line="2988" selection-start-column="15" selection-end-line="2988" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_frameworks/main/impact/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5415">
-          <caret line="285" selection-start-line="285" selection-end-line="285" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_include/current/usersfilter.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="465" column="32" selection-start-line="465" selection-start-column="32" selection-end-line="465" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_include/current/users.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="1333" column="19" selection-start-line="1333" selection-start-column="19" selection-end-line="1333" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_frameworks/main/impact/_pp_photo_gallery.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
@@ -705,35 +580,177 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/_include/current/usersfilter.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8930">
+          <caret line="470" column="36" selection-start-line="470" selection-start-column="36" selection-end-line="470" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_encounters_items.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="386" column="35" lean-forward="true" selection-start-line="386" selection-start-column="35" selection-end-line="386" selection-end-column="35" />
+        <state relative-caret-position="7391">
+          <caret line="389" column="42" selection-start-line="389" selection-start-column="42" selection-end-line="389" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_profile.html">
+    <entry file="file://$PROJECT_DIR$/administration/users_edit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="90" column="42" lean-forward="true" selection-start-line="90" selection-start-column="42" selection-end-line="90" selection-end-column="42" />
+        <state relative-caret-position="4636">
+          <caret line="250" column="33" selection-start-line="250" selection-start-column="33" selection-end-line="250" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/m/search_results.php">
+    <entry file="file://$PROJECT_DIR$/_include/current/cim.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="631" selection-start-line="620" selection-end-line="631" />
+        <state relative-caret-position="56506">
+          <caret line="2974" selection-start-line="2974" selection-end-line="2974" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="37" column="37" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_frameworks/mobile/impact_mobile/search_results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="43" lean-forward="true" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/m/_include/current/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/m/_include/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_frameworks/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/m/profile_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="116" column="64" lean-forward="true" selection-start-line="116" selection-start-column="64" selection-end-line="116" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_frameworks/mobile/impact_mobile/js/search_results.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5472">
+          <caret line="288" column="17" selection-start-line="288" selection-start-column="17" selection-end-line="288" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_frameworks/mobile/impact_mobile/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8645">
+          <caret line="455" column="75" selection-start-line="455" selection-start-column="74" selection-end-line="455" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_include/current/users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51870">
+          <caret line="2736" selection-start-line="2736" selection-end-line="2736" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_frameworks/mobile/impact_mobile/js/profile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3097">
+          <caret line="163" column="36" selection-start-line="163" selection-start-column="36" selection-end-line="163" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_list_users_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/search_results.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="603" lean-forward="true" selection-start-line="603" selection-end-line="603" />
+        <state relative-caret-position="6536">
+          <caret line="584" column="16" selection-start-line="584" selection-start-column="16" selection-end-line="584" selection-end-column="16" />
           <folding>
             <element signature="e#2379#6625#0#PHP" />
             <element signature="e#6626#12364#0#PHP" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_frameworks/main/impact/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4788">
+          <caret line="252" column="37" selection-start-line="252" selection-start-column="37" selection-end-line="252" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_include/current/user.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="4295" column="24" lean-forward="true" selection-start-line="4295" selection-start-column="24" selection-end-line="4295" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_frameworks/main/impact/_profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="168" column="32" selection-start-line="168" selection-start-column="32" selection-end-line="168" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_profile.html_src">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="126" column="25" selection-start-line="126" selection-start-column="25" selection-end-line="126" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_frameworks/mobile/impact_mobile/_profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="403" column="17" lean-forward="true" selection-start-line="403" selection-start-column="17" selection-end-line="403" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/m/search_results.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="604" column="31" lean-forward="true" selection-start-line="604" selection-start-column="31" selection-end-line="604" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social_login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_include/current/social.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1629">
+          <caret line="281" column="38" selection-start-line="281" selection-start-column="24" selection-end-line="281" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_include/current/vk.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
         </state>
       </provider>
     </entry>
