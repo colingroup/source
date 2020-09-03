@@ -2,3 +2,5 @@
 _include/current/misc/ip.db
 _files/logs
 _files/cache/
+.idea/
+
