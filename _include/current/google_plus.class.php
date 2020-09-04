@@ -35,9 +35,9 @@ class Google_plus
     {
         global $g;
 
-        if(Common::isAppIos()) {
-            return false;
-        }
+//        if(Common::isAppIos()) {
+//            return false;
+//        }
 
         if (isset($g['options'][self::$nameSocial.'_appid'])
             && isset($g['options'][self::$nameSocial.'_secret'])
