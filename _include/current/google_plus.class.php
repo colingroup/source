@@ -33,11 +33,13 @@ class Google_plus
 
     public static function getInstance()
     {
-        global $g;
 
-//        if(Common::isAppIos()) {
-//            return false;
-//        }
+        global $g;
+        
+
+        if(Common::isAppIos()) {
+            return false;
+        }
 
         if (isset($g['options'][self::$nameSocial.'_appid'])
             && isset($g['options'][self::$nameSocial.'_secret'])

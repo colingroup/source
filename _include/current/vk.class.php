@@ -3,26 +3,26 @@
 class vk
 {
     private static $instance;
-    private static $nameSocial='vk';
+    private static $nameSocial = 'vk';
 
     private function getUrlAuth()
     {
-        return 'social_login.php?module='.self::$nameSocial;
+        return 'social_login.php?module=' . self::$nameSocial;
     }
 
     private function getUrlToken()
     {
-        return  '';
+        return '';
     }
 
     public function getParamsAuth()
     {
-        $client_id = Common::getOption(self::$nameSocial.'_appid');
-        $client_secret = Common::getOption(self::$nameSocial.'_secret');
+        $client_id = Common::getOption(self::$nameSocial . '_appid');
+        $client_secret = Common::getOption(self::$nameSocial . '_secret');
 
         $params = array(
             'response_type' => 'code',
-            'client_id'     => $client_id,
+            'client_id' => $client_id,
             'client_secret' => $client_secret,
             'scope' => 'email'
         );
@@ -33,9 +33,9 @@ class vk
     public function getUserInfo($code)
     {
         $result = false;
-        $userInfo=false;
+        $userInfo = false;
 
-        $userInfo=get_session(self::$nameSocial.'_user_info',false);
+        $userInfo = get_session(self::$nameSocial . '_user_info', false);
 
         return $userInfo;
     }
@@ -43,24 +43,29 @@ class vk
 
     public static function getInstance()
     {
+        
+        if(Common::isAppAndroid()) {
+            return false;
+        }
+        
         global $g;
-        if (isset($g['options'][self::$nameSocial.'_appid'])
-            && isset($g['options'][self::$nameSocial.'_secret'])
-            && $g['options'][self::$nameSocial.'_appid'] != ''
-            && $g['options'][self::$nameSocial.'_secret'] != ''
+        if (isset($g['options'][self::$nameSocial . '_appid'])
+            && isset($g['options'][self::$nameSocial . '_secret'])
+            && $g['options'][self::$nameSocial . '_appid'] != ''
+            && $g['options'][self::$nameSocial . '_secret'] != ''
         ) {
 
-            if(self::$instance === null){
+            if (self::$instance === null) {
                 // Create our Application instance (replace this with your appId and secret)
                 self::$instance = new self(array(
-                    'appId' => $g['options'][self::$nameSocial.'_appid'],
-                    'secret' => $g['options'][self::$nameSocial.'_secret'],
+                    'appId' => $g['options'][self::$nameSocial . '_appid'],
+                    'secret' => $g['options'][self::$nameSocial . '_secret'],
                     'cookie' => true,
                 ));
 
             }
 
-            return  self::$instance;
+            return self::$instance;
         } else {
             return false;
         }
@@ -73,9 +78,9 @@ class vk
 
     public function getUserId()
     {
-        $userInfo = get_session(self::$nameSocial.'_user_info');
+        $userInfo = get_session(self::$nameSocial . '_user_info');
 
-        if(isset($userInfo['id'])){
+        if (isset($userInfo['id'])) {
             return $userInfo['id'];
         } else {
             return false;
@@ -94,10 +99,10 @@ class vk
         global $g;
 
 
-        $me = get_session(self::$nameSocial.'_user_info');
+        $me = get_session(self::$nameSocial . '_user_info');
 
-        set_session(self::$nameSocial.'_id', 0);
-        set_session(self::$nameSocial.'_photo', false);
+        set_session(self::$nameSocial . '_id', 0);
+        set_session(self::$nameSocial . '_photo', false);
         set_session('social_id', 0);
         set_session('social_photo', false);
 
@@ -111,17 +116,17 @@ class vk
                 }
             }
 
-            if(!isset($me['first_name'])){
-                $me['first_name']='';
+            if (!isset($me['first_name'])) {
+                $me['first_name'] = '';
             }
 
-            if(!isset($me['last_name'])){
-                $me['last_name']='';
+            if (!isset($me['last_name'])) {
+                $me['last_name'] = '';
             }
 
             if (isset($me['first_name'])) {
                 if (get_param('join_handle') == '') {
-                    $_GET['join_handle'] = implode(' ',array($me['first_name'],$me['last_name']));
+                    $_GET['join_handle'] = implode(' ', array($me['first_name'], $me['last_name']));
                 }
             }
 
@@ -142,22 +147,22 @@ class vk
             }
 
 
-            set_session(self::$nameSocial.'_id', $me['id']);
+            set_session(self::$nameSocial . '_id', $me['id']);
             set_session('social_id', $me['id']);
             set_session('social_type', self::$nameSocial);
             // set picture if exists
-            if(isset($me['photo_big']) && strpos($me['photo_big'],'camera_200.png')===false) {
+            if (isset($me['photo_big']) && strpos($me['photo_big'], 'camera_200.png') === false) {
                 set_session('social_photo', $me['photo_big']);
             } else {
                 set_session('social_photo', '');
             }
 
-            if(isset($me['sex'])) {
+            if (isset($me['sex'])) {
                 $gender = $me['sex'];
-                if($gender == 1) {
+                if ($gender == 1) {
                     $gender = 'F';
                 }
-                if($gender == 2) {
+                if ($gender == 2) {
                     $gender = 'M';
                 }
 
@@ -166,7 +171,7 @@ class vk
                             ORDER BY id ASC LIMIT 1';
                 $orientation = DB::result($sql);
 
-                if($orientation) {
+                if ($orientation) {
                     $_GET['orientation'] = $orientation;
                 }
             }
@@ -192,6 +197,7 @@ class vk
         $nameSocial=self::$nameSocial;
         $params=$this->getParamsAuth();
         $currentUrl = Common::urlSite() . $this->loginRedirectUrl();
+        $email = '';
         $team_id = 'WPA82QTVFN';
         $key_id = 'N36GY4F82P';
         $client_id = $params['client_id'];
@@ -265,26 +271,46 @@ KEY;
 
             curl_close($curl);
 
-            $response = json_decode($response);
-            if(!isset($response->access_token)) {
-                echo '<p>Error getting an access token:</p>';
-                echo '<p><a href="/">Start Over</a></p>';
-                die();
+            echo $response;
+            die("here");
+
+        }
+        if (isset($_GET['code'])) {
+            $result = false;
+            $params['redirect_uri']=$currentUrl;
+            $params['code'] = $_GET['code'];
+            $params['scope'] = 'email';
+            $token = json_decode(urlGetContents('https://oauth.vk.com/access_token', 'get', $params), true);
+
+            if (isset($token['access_token'])) {
+                $params = array(
+                    'uids'         => $token['user_id'],
+                    'fields'       => 'id,first_name,last_name,screen_name,sex,bdate,photo_big',
+                    'access_token' => $token['access_token'],
+                    'scope' => 'email',
+                    'v' => '5.0',
+                );
+
+                if(isset($token['email'])){
+                    $email = $token['email'];
+                }
+
+                $userInfo = json_decode(urlGetContents('https://api.vk.com/method/users.get', 'get', $params), true);
+                if (isset($userInfo['response'][0]['id'])) {
+                    $userInfo = $userInfo['response'][0];
+                    $userInfo['email'] = $email;
+                    $result = true;
+                }
             }
 
-            $claims = explode('.', $response->id_token)[1];
-            $claims = json_decode(base64_decode($claims));
-            if (isset($claims->email)) {
-                $userInfo['email'] = $claims->email;
-                $userInfo['id'] = $claims->sub;
-                $userInfo['status']=array();
-                $userInfo['entities']=array();
+            if ($result) {
                 set_session('vk_user_info', $userInfo);
                 redirect('join_facebook.php?cmd=vk_login');
             } else {
                 Common::toHomePage();
             }
         }
+
 
 
         $url = 'https://appleid.apple.com/auth/authorize';
@@ -358,4 +384,5 @@ KEY;
 
         return array($pos, $data);
     }
+
 }

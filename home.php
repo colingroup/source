@@ -79,6 +79,7 @@ class CProfile extends CHtmlBlock
 		$html->setvar("state", $g_user['state_id']);
 		$html->setvar("city", $g_user['city_id']);
 
+
         if (Common::isOptionActive('hide_profile_enabled')) {
             $sql = "SELECT `hide_time`
                       FROM `user`

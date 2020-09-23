@@ -42,6 +42,8 @@ class CXmlProfile extends CUsers
 		$this->m_field['city_title'] = array("city", null);
 		$this->m_field['state_title'] = array("state", null);
 		$this->m_field['country_title'] = array("country", null);
+
+
 		$this->m_field_default = $this->m_field;
 	}
 	function onItem(&$html, $row, $i, $last)

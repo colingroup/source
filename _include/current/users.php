@@ -136,6 +136,27 @@ class CUsers extends CHtmlList {
         }
     }
 
+    function twopoints_on_earth($latitudeFrom, $longitudeFrom,
+                                $latitudeTo,  $longitudeTo)
+    {
+        $long1 = deg2rad($longitudeFrom);
+        $long2 = deg2rad($longitudeTo);
+        $lat1 = deg2rad($latitudeFrom);
+        $lat2 = deg2rad($latitudeTo);
+
+        //Haversine Formula
+        $dlong = $long2 - $long1;
+        $dlati = $lat2 - $lat1;
+
+        $val = pow(sin($dlati/2),2)+cos($lat1)*cos($lat2)*pow(sin($dlong/2),2);
+
+        $res = 2 * asin(sqrt($val));
+
+        $radius = 3958.756;
+
+        return round($res*$radius*1.61, 0);
+    }
+
     function onItem(&$html, $row, $i, $last) {
         global $g;
         global $l;
@@ -456,6 +477,27 @@ class CUsers extends CHtmlList {
         $html->setvar("name_one_letter", User::nameOneLetterFull($row['name']));
         $html->setvar("name_one_letter_short", User::nameOneLetterShort($row['name']));
         $html->setvar("age", $row['age']);
+        // TODO CONDA
+        // setvar lat
+
+        if (guid()) {
+            $lat = guser('geo_position_lat');
+            $long = guser('geo_position_long');
+        } else {
+            $geoCityInfo = IP::geoInfoCity();
+            $lat = $geoCityInfo['lat'];
+            $long = $geoCityInfo['long'];
+        }
+        if ($lat && $long) {
+            $dist = $this->twopoints_on_earth($lat, $long, $row['geo_position_lat'], $row['geo_position_long']);
+            if($dist == 0){
+                $html->setvar("dist", "Near By");
+            }
+            else{
+                $html->setvar("dist", $dist." Km");
+            }
+        }
+
         $orientation = isset($orientation_row['title']) ? $orientation_row['title'] : '';
         $html->setvar("orientation", l($orientation));
         if (UserFields::isActive('orientation')){
@@ -1708,6 +1750,7 @@ class CUsersProfile extends CUsers {
         $html->setvar("country", $this->m_field['country_title'][1]);
         $html->setvar("state", $this->m_field['state_title'][1]);
         $html->setvar("city", $this->m_field['city_title'][1]);
+
 
         //DB::query("SELECT * FROM userinfo WHERE user_id=" . $row['user_id'] . "", 2);
         //$row_user2 = DB::fetch_row(2);
