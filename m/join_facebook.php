@@ -25,6 +25,7 @@ if ($cmd == 'fb_login') {
     $currentSocial='twitter';
 }
 
+
 if($currentSocial!=''){
     Social::setActive($currentSocial);
     Social::login();
