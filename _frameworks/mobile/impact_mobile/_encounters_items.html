@@ -7,7 +7,10 @@
         <!-- begin_status_online -->
         <div class="status online"></div>
         <!-- end_status_online -->
-        <b>{name} - {age} </b> : <span> {city_title} , {state} {country}</span>
+        <a class="username" data-type-loader="fade_btn" data-cl-loader="loader_filter" href="{url_main}profile_view.php?user_id={user_id}&from={from_page}{ref_link}">{name}</a> &nbsp;&nbsp;
+        <i class="fa fa-calendar" aria-hidden="true"></i> {age} <br/>
+        <i class="fa fa-map-marker" aria-hidden="true"></i><span> {city_title} {state} {country}</span>
+        
         <a href="{url_city}index.php?view=mobile&from={user_id}"
            class="status_3dcity <!-- begin_status_3dcity_profile -->to_show<!-- end_status_3dcity_profile -->"></a>
     </div>
@@ -21,6 +24,8 @@
                 <img class="no_color_t" src="{url_files}{guid_photo_m}" alt="">
             </a>
         </div>
+        
+
         <div class="frame fl_right">
             <a class="go_to_page" data-cl-loader="loader_encounters_to_profile"
                href="{url_main}{url_page_profile_view}?user_id={user_id}&from=encounters">
